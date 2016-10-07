@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="openCamera">Open Camera</string>
-  <string name="app_name">CameraAppDemo</string>
+  <string name="openCamera">Take A Picture</string>
+  <string name="browseItems">browse Items</string>
+  <string name="browseItems">browse Items</string>
+  <string name="addItem">Add an Item</string>
+  <string name="saveItem">Save Item</string>
+  <string name="addLabel">Add a Label Please</string>
+  <string name="getallItems">View all</string>
+  <string name="app_name">Awesome Junk</string>
 </resources>
