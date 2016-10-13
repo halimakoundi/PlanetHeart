@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.awesomejunk.droid", "AwesomeJunkWS\AwesomeJunkWS.Droid\com.awesomejunk.droid.csproj", "{E80BDE21-CD63-4958-9473-D342B63882EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetHeart.droid", "AwesomeJunkWS\AwesomeJunkWS.Droid\PlanetHeart.droid.csproj", "{E80BDE21-CD63-4958-9473-D342B63882EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeJunkWS.iOS", "AwesomeJunkWS\AwesomeJunkWS.iOS\AwesomeJunkWS.iOS.csproj", "{1550D4B5-BBDE-4CE7-825F-9BA607A5A562}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetHeart.iOS", "AwesomeJunkWS\AwesomeJunkWS.iOS\PlanetHeart.iOS.csproj", "{1550D4B5-BBDE-4CE7-825F-9BA607A5A562}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeJunkWS", "AwesomeJunkWS\AwesomeJunkWS\AwesomeJunkWS.csproj", "{371016C0-C4E0-4BB9-A9F0-F3BA17958EC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetHeartPCL", "AwesomeJunkWS\AwesomeJunkWS\PlanetHeartPCL.csproj", "{371016C0-C4E0-4BB9-A9F0-F3BA17958EC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeJunkPCL.Tests", "AwesomeJunkPCL.Tests\AwesomeJunkPCL.Tests.csproj", "{D4082D89-9466-46CA-B91D-BFF09652168B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetHeartPCL.Tests", "AwesomeJunkPCL.Tests\PlanetHeartPCL.Tests.csproj", "{D4082D89-9466-46CA-B91D-BFF09652168B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidUI.Test", "AndroidUI.Test\AndroidUI.Test.csproj", "{84F2A717-97DF-4F14-9BE3-744F6B472C48}"
 EndProject

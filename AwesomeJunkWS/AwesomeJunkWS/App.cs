@@ -4,8 +4,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using AwesomeJunkWS.Domain;
-using AwesomeJunkWS.Presentation;
-using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
@@ -48,6 +46,21 @@ namespace AwesomeJunkWS
             }
 
         }
+        public Items GetAllItems()
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = BaseAddress;
+                using (HttpResponseMessage httpResponse = httpClient.GetAsync("api/item").Result)
+                {
+                    httpResponse.EnsureSuccessStatusCode();
+                    var result = httpResponse.Content.ReadAsStringAsync().Result;
+                    var items = JsonConvert.DeserializeObject<Items>(result);
+                    return items;
+                }
+            }
+
+        }
 
         public async Task SaveTodoItemAsync(Item item, bool isNewItem = false)
         {
@@ -62,7 +75,7 @@ namespace AwesomeJunkWS
                     httpResponse.EnsureSuccessStatusCode();
                     if (httpResponse.IsSuccessStatusCode)
                     {
-                        Debug.WriteLine(@" PresentationItem successfully saved.");
+                        Debug.WriteLine(@" Item successfully saved.");
                     }
                 }
             }

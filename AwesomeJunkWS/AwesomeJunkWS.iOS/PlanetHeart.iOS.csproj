@@ -138,9 +138,9 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AwesomeJunkWS\AwesomeJunkWS.csproj">
+    <ProjectReference Include="..\AwesomeJunkWS\PlanetHeartPCL.csproj">
       <Project>{371016C0-C4E0-4BB9-A9F0-F3BA17958EC5}</Project>
-      <Name>AwesomeJunkWS</Name>
+      <Name>PlanetHeartPCL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -36,9 +36,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Domain\GetItemsInteractor.cs" />
+    <Compile Include="Domain\IInteractor.cs" />
     <Compile Include="Domain\Item.cs" />
-    <Compile Include="Domain\ItemMapper.cs" />
+    <Compile Include="Presentation\Executor.cs" />
+    <Compile Include="Presentation\ItemMapper.cs" />
     <Compile Include="Domain\Items.cs" />
+    <Compile Include="Presentation\BrowseItemsPresenter.cs" />
     <Compile Include="Presentation\PresentationItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

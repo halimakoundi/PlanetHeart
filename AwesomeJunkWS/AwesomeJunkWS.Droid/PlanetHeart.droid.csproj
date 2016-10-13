@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AwesomeJunkWS.Droid</RootNamespace>
-    <AssemblyName>AwesomeJunkWS.Droid</AssemblyName>
+    <RootNamespace>PlanetHeart.Droid</RootNamespace>
+    <AssemblyName>PlanetHeart.Droid</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
@@ -111,7 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitmapHelpers.cs" />
-    <Compile Include="BrowseItems.cs" />
+    <Compile Include="BrowseItemsActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,9 +143,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AwesomeJunkWS\AwesomeJunkWS.csproj">
+    <ProjectReference Include="..\AwesomeJunkWS\PlanetHeartPCL.csproj">
       <Project>{371016C0-C4E0-4BB9-A9F0-F3BA17958EC5}</Project>
-      <Name>AwesomeJunkWS</Name>
+      <Name>PlanetHeartPCL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

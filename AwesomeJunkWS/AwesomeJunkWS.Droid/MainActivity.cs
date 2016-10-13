@@ -1,14 +1,12 @@
-﻿using AwesomeJunkWS.Droid;
+﻿using System;
+using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Widget;
 
-namespace CameraAppDemo
+namespace PlanetHeart.Droid
 {
-    using System;
-    using Android.App;
-    using Android.Content;
-    using Android.OS;
-    using Android.Widget;
-
-    [Activity(Label = "Awesome Junk", MainLauncher = true)]
+    [Activity(Label = "Planet Heart", MainLauncher = true)]
     public class MainActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)
@@ -26,7 +24,7 @@ namespace CameraAppDemo
 
         private void BrowseItems(object sender, EventArgs eventArgs)
         {
-            var second = new Intent(this, typeof(BrowseItems));
+            var second = new Intent(this, typeof(BrowseItemsActivity));
             second.PutExtra("FirstData", "Data from FirstActivity");
             StartActivity(second);
 

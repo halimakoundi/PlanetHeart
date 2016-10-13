@@ -1,20 +1,19 @@
+using System;
+using System.Collections.Generic;
+using Android.App;
+using Android.Content;
+using Android.Content.PM;
+using Android.Graphics;
+using Android.OS;
+using Android.Provider;
+using Android.Widget;
 using AwesomeJunkWS;
 using AwesomeJunkWS.Domain;
 using AwesomeJunkWS.Droid;
-using AwesomeJunkWS.Presentation;
+using Java.IO;
 
-namespace CameraAppDemo
+namespace PlanetHeart.Droid
 {
-    using System;
-    using System.Collections.Generic;
-    using Android.App;
-    using Android.Content;
-    using Android.Content.PM;
-    using Android.Graphics;
-    using Android.OS;
-    using Android.Provider;
-    using Android.Widget;
-    using Java.IO;
     using Environment = Android.OS.Environment;
     using Uri = Android.Net.Uri;
 
