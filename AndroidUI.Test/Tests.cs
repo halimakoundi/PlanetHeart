@@ -21,7 +21,7 @@ namespace AndroidUI.Test
             // and select the app projects that should be tested.
                 app = ConfigureApp
                 .Android
-                .ApkFile($"../../AwesomeJunkWS.Droid/bin/Debug/AwesomeJunkWS.Droid.apk")
+                .ApkFile($"../../PlanetHeart.Droid/bin/Debug/PlanetHeart.Droid.apk")
                 .StartApp();
         }
 
