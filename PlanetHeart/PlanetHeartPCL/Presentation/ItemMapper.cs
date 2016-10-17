@@ -8,7 +8,7 @@ namespace PlanetHeart.Domain
     {
         public PresentationItem Map(Item item)
         {
-            return new PresentationItem($"{item.Id} - {item.Type}", "Admin", 23 );
+            return new PresentationItem($"{item.Id} - {item.Type}", "Admin", 23);
         }
 
         public List<PresentationItem> Map(List<Item> items)

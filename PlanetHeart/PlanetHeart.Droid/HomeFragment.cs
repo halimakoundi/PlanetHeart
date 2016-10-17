@@ -12,6 +12,7 @@ namespace PlanetHeart.Droid
     {
         private HomeFragmentPresenter _presenter;
         private ListView _listView;
+        private LayoutInflater _inflater;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -21,6 +22,7 @@ namespace PlanetHeart.Droid
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+            _inflater = inflater;
             return inflater.Inflate(Resource.Layout.HomeFragment, container, false);
         }
 
@@ -33,6 +35,7 @@ namespace PlanetHeart.Droid
 
         public void Display(List<PresentationItem> items)
         {
+          //  _listView.Adapter = new ArrayAdapter(this.Context, Resource.Layout.simp, items);
             _listView.Adapter = new ItemListAdapter(Activity, items);
         }
     }

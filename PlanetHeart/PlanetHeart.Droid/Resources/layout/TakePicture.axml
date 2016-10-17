@@ -3,35 +3,29 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-  
     <Button
         android:id="@+id/takePicture"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/openCamera" />
-  
     <TextView
         android:id="@+id/itemLabelTextView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/addLabel" />
-  
-  <EditText
+    <EditText
         android:id="@+id/itemLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-  
-  <Button
+    <Button
         android:id="@+id/saveItem"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/saveItem" />
-  
     <ImageView
         android:src="@android:drawable/ic_menu_gallery"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/imageView1"
         android:adjustViewBounds="true" />
-
 </LinearLayout>

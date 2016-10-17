@@ -6,10 +6,10 @@ namespace PlanetHeart.Presentation
 {
     public class HomeFragmentPresenter
     {
-        private GetItemsInteractor _getItemsInteractor;
-        private Executor _executor;
-        private ItemMapper _maper;
-        private IBrowserView _view;
+        private readonly GetItemsInteractor _getItemsInteractor;
+        private readonly Executor _executor;
+        private readonly ItemMapper _maper;
+        private readonly IBrowserView _view;
 
         public HomeFragmentPresenter(GetItemsInteractor getItemsInteractor, Executor executor, IBrowserView view, ItemMapper maper)
         {

@@ -9,36 +9,36 @@ namespace PlanetHeart.Droid
 {
     public class ItemListAdapter : BaseAdapter<PresentationItem>
     {
-        List<PresentationItem> items;
-        Activity context;
+        private readonly List<PresentationItem> _items;
+        private readonly Activity _context;
+        private View _view;
+
         public ItemListAdapter(Activity context, List<PresentationItem> items)
             : base()
         {
-            this.context = context;
-            this.items = items;
+            _items = items;
+            _context = context;
+            _view = context.LayoutInflater.Inflate(Resource.Layout.PresentationItem, null);
+
         }
         public override long GetItemId(int position)
         {
             return position;
         }
-        public override PresentationItem this[int position]
-        {
-            get { return items[position]; }
-        }
-        public override int Count
-        {
-            get { return items.Count; }
-        }
+        public override PresentationItem this[int position] => _items[position];
+        public override int Count => _items.Count;
+
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            var item = items[position];
-            View view = convertView;
-            //if (view == null) // no view to re-use, create new
-            //    view = context.LayoutInflater.Inflate(Resource.Layout.ItemRow, null);
-            view.FindViewById<TextView>(Android.Resource.Id.Text1).Text = item.AddedBy;
-            view.FindViewById<TextView>(Android.Resource.Id.Text2).Text = item.Title;
-            //view.FindViewById<ImageView>(Android.Resource.Id.ItemImage).SetImageResource(item.ImageResourceId);
-            return view;
+            var item = _items[position];
+            _view = convertView ?? _context.LayoutInflater.Inflate(Android.Resource.Layout.SimpleListItem1, null);
+
+            var addedBy =  _view.FindViewById<TextView>(Android.Resource.Id.Text1);
+            addedBy.Text = item.AddedBy;
+            //var title = _view.FindViewById<TextView>(Android.Resource.Id.Text2);
+            //title.Text = item.Title;
+            //view.FindViewById<ImageView>(Android.Resource.Id.Image).SetImageResource(item.ImageResourceId);
+            return _view;
         }
     }
 }

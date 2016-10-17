@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PlanetHeart.Domain
 {
@@ -13,7 +14,7 @@ namespace PlanetHeart.Domain
 
         public List<Item> All()
         {
-            return _data;
+            return _data.Where(x => x != null).ToList();
         }
     }
 }
