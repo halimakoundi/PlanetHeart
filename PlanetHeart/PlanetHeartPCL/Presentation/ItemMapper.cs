@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using PlanetHeart.Presentation;
 using System.Linq;
+using PlanetHeartPCL.Domain;
 
-namespace PlanetHeart.Domain
+namespace PlanetHeartPCL.Presentation
 {
     public class ItemMapper
     {

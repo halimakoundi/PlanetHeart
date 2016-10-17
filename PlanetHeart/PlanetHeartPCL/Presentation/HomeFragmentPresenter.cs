@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using PlanetHeart.Domain;
+using PlanetHeartPCL.Domain;
 
-namespace PlanetHeart.Presentation
+namespace PlanetHeartPCL.Presentation
 {
     public class HomeFragmentPresenter
     {

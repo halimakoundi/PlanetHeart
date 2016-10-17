@@ -7,9 +7,9 @@ using Android.Graphics;
 using Android.OS;
 using Android.Provider;
 using Android.Widget;
-using AwesomeJunkWS.Infrastructure;
-using PlanetHeart.Domain;
 using Java.IO;
+using PlanetHeartPCL.Domain;
+using PlanetHeartPCL.Infrastructure;
 
 namespace PlanetHeart.Droid
 {

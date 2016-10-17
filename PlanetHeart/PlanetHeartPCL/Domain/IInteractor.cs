@@ -1,4 +1,4 @@
-namespace PlanetHeart.Domain
+namespace PlanetHeartPCL.Domain
 {
     public interface IInteractor
     {

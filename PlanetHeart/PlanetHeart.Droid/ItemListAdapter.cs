@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using Android.App;
-using Android.Content.Res;
 using Android.Views;
 using Android.Widget;
-using PlanetHeart.Presentation;
+using PlanetHeartPCL.Presentation;
 
 namespace PlanetHeart.Droid
 {
@@ -21,10 +20,12 @@ namespace PlanetHeart.Droid
             _view = context.LayoutInflater.Inflate(Resource.Layout.PresentationItem, null);
 
         }
+
         public override long GetItemId(int position)
         {
             return position;
         }
+
         public override PresentationItem this[int position] => _items[position];
         public override int Count => _items.Count;
 

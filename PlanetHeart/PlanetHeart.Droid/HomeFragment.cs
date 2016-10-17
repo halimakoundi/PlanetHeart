@@ -3,8 +3,8 @@ using Android.Support.V4.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using PlanetHeart.Domain;
-using PlanetHeart.Presentation;
+using PlanetHeartPCL.Domain;
+using PlanetHeartPCL.Presentation;
 
 namespace PlanetHeart.Droid
 {

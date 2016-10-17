@@ -1,8 +1,7 @@
 using System;
-using AwesomeJunkWS.Infrastructure;
-using PlanetHeart.Presentation;
+using PlanetHeartPCL.Infrastructure;
 
-namespace PlanetHeart.Domain
+namespace PlanetHeartPCL.Domain
 {
     public class GetItemsInteractor : IInteractor
     {

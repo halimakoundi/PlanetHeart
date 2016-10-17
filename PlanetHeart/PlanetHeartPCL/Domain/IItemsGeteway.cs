@@ -1,6 +1,4 @@
-using PlanetHeart.Domain;
-
-namespace PlanetHeart
+namespace PlanetHeartPCL.Domain
 {
     public interface IItemsGeteway
     {

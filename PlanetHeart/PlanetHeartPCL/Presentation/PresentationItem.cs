@@ -1,4 +1,4 @@
-namespace PlanetHeart.Presentation
+namespace PlanetHeartPCL.Presentation
 {
     public class PresentationItem
     {
