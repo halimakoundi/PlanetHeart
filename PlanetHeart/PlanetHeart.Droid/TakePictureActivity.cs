@@ -30,7 +30,7 @@ namespace PlanetHeart.Droid
         private ImageView _imageView;
         private TextView _label;
         private Button _saveButton;
-        readonly ItemsGeteway _sharedItemsGeteway = new ItemsGeteway();
+        readonly ItemsGateway _sharedItemsGateway = new ItemsGateway();
         private EditText _labelEditText;
 
         protected override void OnCreate(Bundle bundle)
@@ -65,7 +65,7 @@ namespace PlanetHeart.Droid
         {
             var item = new Item(_labelEditText.Text);
 
-            await _sharedItemsGeteway.SaveTodoItemAsync(item, true);
+            await _sharedItemsGateway.SaveTodoItemAsync(item, true);
             new AlertDialog.Builder(this)
             .SetPositiveButton("OK", (senderBtn, args) =>
             {

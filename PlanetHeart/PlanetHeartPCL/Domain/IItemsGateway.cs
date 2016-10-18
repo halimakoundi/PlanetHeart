@@ -1,6 +1,6 @@
 namespace PlanetHeartPCL.Domain
 {
-    public interface IItemsGeteway
+    public interface IItemsGateway
     {
         Items GetAllItems();
     }

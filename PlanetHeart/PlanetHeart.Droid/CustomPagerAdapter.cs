@@ -2,8 +2,6 @@ using System;
 using Android.Content;
 using Android.Runtime;
 using Android.Support.V4.App;
-using Android.Views;
-using Android.Widget;
 using Java.Lang;
 
 namespace PlanetHeart.Droid
@@ -11,7 +9,7 @@ namespace PlanetHeart.Droid
     public class CustomPagerAdapter : FragmentPagerAdapter
     {
         const int PAGE_COUNT = 2;
-        private string[] tabTitles = { "Tab1", "Tab2" };
+        private string[] tabTitles = { "Home", "Favourits" };
         readonly Context context;
 
         public CustomPagerAdapter(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)

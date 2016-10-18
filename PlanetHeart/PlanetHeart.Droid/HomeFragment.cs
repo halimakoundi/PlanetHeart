@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using PlanetHeartPCL.Domain;
+using PlanetHeartPCL.Infrastructure;
 using PlanetHeartPCL.Presentation;
 
 namespace PlanetHeart.Droid
@@ -12,17 +13,15 @@ namespace PlanetHeart.Droid
     {
         private HomeFragmentPresenter _presenter;
         private ListView _listView;
-        private LayoutInflater _inflater;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            _presenter = new HomeFragmentPresenter(new GetItemsInteractor(), new Executor(), this, new ItemMapper());
+            _presenter = new HomeFragmentPresenter(new GetItemsInteractor( new ItemsGateway()), new Executor(), this, new ItemMapper());
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            _inflater = inflater;
             return inflater.Inflate(Resource.Layout.HomeFragment, container, false);
         }
 
@@ -35,7 +34,6 @@ namespace PlanetHeart.Droid
 
         public void Display(List<PresentationItem> items)
         {
-          //  _listView.Adapter = new ArrayAdapter(this.Context, Resource.Layout.simp, items);
             _listView.Adapter = new ItemListAdapter(Activity, items);
         }
     }

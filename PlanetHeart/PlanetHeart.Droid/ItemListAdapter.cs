@@ -32,13 +32,13 @@ namespace PlanetHeart.Droid
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             var item = _items[position];
-            _view = convertView ?? _context.LayoutInflater.Inflate(Android.Resource.Layout.SimpleListItem1, null);
+            _view = convertView ?? _context.LayoutInflater.Inflate(Resource.Layout.PresentationItem, null);
 
-            var addedBy =  _view.FindViewById<TextView>(Android.Resource.Id.Text1);
+            var addedBy =  _view.FindViewById<TextView>(Resource.Id.Text1);
             addedBy.Text = item.AddedBy;
-            //var title = _view.FindViewById<TextView>(Android.Resource.Id.Text2);
-            //title.Text = item.Title;
-            //view.FindViewById<ImageView>(Android.Resource.Id.Image).SetImageResource(item.ImageResourceId);
+            var title = _view.FindViewById<TextView>(Resource.Id.Text2);
+            title.Text = item.Title;
+            _view.FindViewById<ImageView>(Resource.Id.itemimage).SetImageResource(item.ImageResourceId);
             return _view;
         }
     }

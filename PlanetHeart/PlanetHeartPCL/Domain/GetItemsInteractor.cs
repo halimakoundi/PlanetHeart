@@ -1,12 +1,16 @@
 using System;
-using PlanetHeartPCL.Infrastructure;
 
 namespace PlanetHeartPCL.Domain
 {
     public class GetItemsInteractor : IInteractor
     {
         private Action<Items> _callback;
-        private readonly ItemsGeteway _itemsGeteway = new ItemsGeteway();
+        private readonly IItemsGateway _itemsGateway;
+
+        public GetItemsInteractor(IItemsGateway itemsGateway)
+        {
+            _itemsGateway = itemsGateway;
+        }
 
         public void SetCallback(Action<Items> action)
         {
@@ -15,7 +19,7 @@ namespace PlanetHeartPCL.Domain
 
         public void Execute()
         {
-            _callback.Invoke(_itemsGeteway.GetAllItems());
+            _callback.Invoke(_itemsGateway.GetAllItems());
         }
     }
 }

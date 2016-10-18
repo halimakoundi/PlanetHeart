@@ -9,11 +9,10 @@ using PlanetHeartPCL.Domain;
 
 namespace PlanetHeartPCL.Infrastructure
 {
-    public class ItemsGeteway : IItemsGeteway
+    public class ItemsGateway : IItemsGateway
     {
-        public ItemsGeteway()
+        public ItemsGateway()
         {
-            // The root page of your application
             BaseAddress = new Uri("http://awesomejunk.azurewebsites.net/");
 
         }

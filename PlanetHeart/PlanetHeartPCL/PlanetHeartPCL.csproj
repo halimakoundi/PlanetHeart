@@ -35,11 +35,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Domain\IItemsGeteway.cs" />
+    <Compile Include="Domain\IItemsGateway.cs" />
     <Compile Include="Domain\GetItemsInteractor.cs" />
     <Compile Include="Domain\IInteractor.cs" />
     <Compile Include="Domain\Item.cs" />
-    <Compile Include="Infrastructure\ItemsGeteway.cs" />
+    <Compile Include="Infrastructure\ItemsGateway.cs" />
     <Compile Include="Presentation\Executor.cs" />
     <Compile Include="Presentation\ItemMapper.cs" />
     <Compile Include="Domain\Items.cs" />
