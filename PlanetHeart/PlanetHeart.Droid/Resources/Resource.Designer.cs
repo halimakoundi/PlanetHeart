@@ -3315,8 +3315,11 @@ namespace PlanetHeart.Droid
 			// aapt resource value: 0x7f020064
 			public const int mr_ic_settings_light = 2130837604;
 			
+			// aapt resource value: 0x7f020066
+			public const int notification_template_icon_bg = 2130837606;
+			
 			// aapt resource value: 0x7f020065
-			public const int notification_template_icon_bg = 2130837605;
+			public const int rewardscreen = 2130837605;
 			
 			static Drawable()
 			{
@@ -3514,17 +3517,17 @@ namespace PlanetHeart.Droid
 			// aapt resource value: 0x7f0b003d
 			public const int image = 2131427389;
 			
-			// aapt resource value: 0x7f0b008d
-			public const int imageView1 = 2131427469;
+			// aapt resource value: 0x7f0b008e
+			public const int imageView1 = 2131427470;
 			
 			// aapt resource value: 0x7f0b0083
 			public const int info = 2131427459;
 			
-			// aapt resource value: 0x7f0b008b
-			public const int itemLabel = 2131427467;
+			// aapt resource value: 0x7f0b008c
+			public const int itemLabel = 2131427468;
 			
-			// aapt resource value: 0x7f0b008a
-			public const int itemLabelTextView = 2131427466;
+			// aapt resource value: 0x7f0b008b
+			public const int itemLabelTextView = 2131427467;
 			
 			// aapt resource value: 0x7f0b0088
 			public const int itemimage = 2131427464;
@@ -3604,14 +3607,17 @@ namespace PlanetHeart.Droid
 			// aapt resource value: 0x7f0b004f
 			public const int radio = 2131427407;
 			
+			// aapt resource value: 0x7f0b0089
+			public const int reward_image = 2131427465;
+			
 			// aapt resource value: 0x7f0b002e
 			public const int right = 2131427374;
 			
 			// aapt resource value: 0x7f0b006c
 			public const int route_name = 2131427436;
 			
-			// aapt resource value: 0x7f0b008c
-			public const int saveItem = 2131427468;
+			// aapt resource value: 0x7f0b008d
+			public const int saveItem = 2131427469;
 			
 			// aapt resource value: 0x7f0b0015
 			public const int screen = 2131427349;
@@ -3712,8 +3718,8 @@ namespace PlanetHeart.Droid
 			// aapt resource value: 0x7f0b000c
 			public const int tabMode = 2131427340;
 			
-			// aapt resource value: 0x7f0b0089
-			public const int takePicture = 2131427465;
+			// aapt resource value: 0x7f0b008a
+			public const int takePicture = 2131427466;
 			
 			// aapt resource value: 0x7f0b0082
 			public const int text = 2131427458;
@@ -3943,19 +3949,22 @@ namespace PlanetHeart.Droid
 			public const int PresentationItem = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int select_dialog_item_material = 2130903087;
+			public const int Reward = 2130903087;
 			
 			// aapt resource value: 0x7f030030
-			public const int select_dialog_multichoice_material = 2130903088;
+			public const int select_dialog_item_material = 2130903088;
 			
 			// aapt resource value: 0x7f030031
-			public const int select_dialog_singlechoice_material = 2130903089;
+			public const int select_dialog_multichoice_material = 2130903089;
 			
 			// aapt resource value: 0x7f030032
-			public const int support_simple_spinner_dropdown_item = 2130903090;
+			public const int select_dialog_singlechoice_material = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int TakePicture = 2130903091;
+			public const int support_simple_spinner_dropdown_item = 2130903091;
+			
+			// aapt resource value: 0x7f030034
+			public const int TakePicture = 2130903092;
 			
 			static Layout()
 			{

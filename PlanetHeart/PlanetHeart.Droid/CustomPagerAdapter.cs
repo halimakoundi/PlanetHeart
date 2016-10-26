@@ -10,7 +10,8 @@ namespace PlanetHeart.Droid
     public class CustomPagerAdapter : FragmentPagerAdapter
     {
         const int PAGE_COUNT = 3;
-        private string[] tabTitles = { "Home","Add Item", "Favourites" };
+        private readonly string[] _tabTitles = { "Home", "Add Item", "Favourites" };
+        private AddItemFragment _addItemFragment;
 
         public CustomPagerAdapter(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
@@ -24,17 +25,17 @@ namespace PlanetHeart.Droid
 
         public override Fragment GetItem(int position)
         {
-            if (position == 0)
+            if (position == 1)
             {
-                return new HomeFragment();
+                return _addItemFragment ?? (_addItemFragment = new AddItemFragment());
             }
-            return new AddItemFragment();
+            return new HomeFragment();
         }
 
         public override ICharSequence GetPageTitleFormatted(int position)
         {
             // Generate title based on item position
-            return CharSequence.ArrayFromStringArray(tabTitles)[position];
+            return CharSequence.ArrayFromStringArray(_tabTitles)[position];
         }
 
     }

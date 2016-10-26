@@ -24,15 +24,15 @@ namespace PlanetHeart.Droid.Views
 
         public override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
             InitialisePresenter();
+            base.OnCreate(savedInstanceState);
         }
 
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
-            base.OnViewCreated(view, savedInstanceState);
             InitialiseViewElements();
             InitialiseElementsForTakingAPicture();
+            base.OnViewCreated(view, savedInstanceState);
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -87,15 +87,17 @@ namespace PlanetHeart.Droid.Views
         {
             _presenter = new AddItemPresenter(new AddItemInteractor(this, new ItemsGateway()),
                 new Executor(),
-                new Navigator());
+                new Navigator(Activity.ApplicationContext));
         }
 
         private void InitialiseElementsForTakingAPicture()
         {
             if (!IsCameraAppAvailable()) return;
             Picture.CreateDirectory();
+
             var takePictureBtn = Activity.FindViewById<Button>(Resource.Id.takePicture);
             takePictureBtn.Click += TakeAPicture;
+
             _imageView = Activity.FindViewById<ImageView>(Resource.Id.imageView1);
         }
 
@@ -104,12 +106,13 @@ namespace PlanetHeart.Droid.Views
             Intent intent = new Intent(MediaStore.ActionImageCapture);
             var availableActivities =
                 Activity.PackageManager.QueryIntentActivities(intent, PackageInfoFlags.MatchDefaultOnly);
+
             return availableActivities != null && availableActivities.Count > 0;
         }
 
         private void TakeAPicture(object sender, EventArgs eventArgs)
         {
-            Intent intent = new Intent(MediaStore.ActionImageCapture);
+            var intent = new Intent(MediaStore.ActionImageCapture);
 
             Picture.File = new File(Picture.Dir, $"newgem_{Guid.NewGuid()}.jpg");
 

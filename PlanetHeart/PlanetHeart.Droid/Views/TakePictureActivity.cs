@@ -34,9 +34,9 @@ namespace PlanetHeart.Droid.Views
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.TakePicture);
 
-            _presenter = new AddItemPresenter(new AddItemInteractor(this, new ItemsGateway()),
-                                                new Executor(),
-                                                new Navigator());
+           // _presenter = new AddItemPresenter(new AddItemInteractor(this, new ItemsGateway()),
+           //                                     new Executor(),
+             //                                   new Navigator());
             if (IsThereAnAppToTakePictures())
             {
                 CreateDirectoryForPictures();
