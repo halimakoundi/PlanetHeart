@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using PlanetHeartPCL.Domain;
 
 namespace PlanetHeartPCL.Presentation
@@ -35,10 +34,5 @@ namespace PlanetHeartPCL.Presentation
             };
            
         }
-    }
-
-    public interface IBrowserView
-    {
-        void Display(List<PresentationItem> presentationItems);
     }
 }
