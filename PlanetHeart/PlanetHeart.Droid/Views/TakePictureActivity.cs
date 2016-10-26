@@ -10,40 +10,36 @@ using Android.Widget;
 using Java.IO;
 using PlanetHeartPCL.Domain;
 using PlanetHeartPCL.Infrastructure;
+using PlanetHeartPCL.Presentation;
+using Picture = PlanetHeart.Droid.Infrastructure.Picture;
 
-namespace PlanetHeart.Droid
+namespace PlanetHeart.Droid.Views
 {
     using Environment = Android.OS.Environment;
     using Uri = Android.Net.Uri;
 
-    public static class Picture
-    {
-        public static File File;
-        public static File Dir;
-        public static Bitmap Bitmap;
-    }
 
-    [Activity(Label = "Awesome Junk")]
-    public class TakePictureActivity : Activity
+    [Activity(Label = "PlanetHeart")]
+    public class TakePictureActivity : Activity, IAddItemView
     {
 
         private ImageView _imageView;
-        private TextView _label;
         private Button _saveButton;
         readonly ItemsGateway _sharedItemsGateway = new ItemsGateway();
         private EditText _labelEditText;
+        private AddItemPresenter _presenter;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.TakePicture);
 
+            _presenter = new AddItemPresenter(new AddItemInteractor(this, new ItemsGateway()),
+                                                new Executor(),
+                                                new Navigator());
             if (IsThereAnAppToTakePictures())
             {
                 CreateDirectoryForPictures();
-
-                _label = FindViewById<TextView>(Resource.Id.itemLabelTextView);
-                //_label.Visibility = Android.Views.ViewStates.Gone;
 
                 _labelEditText = FindViewById<EditText>(Resource.Id.itemLabel);
 
@@ -54,11 +50,16 @@ namespace PlanetHeart.Droid
                 takePictureBtn.Click += TakeAPicture;
 
                 Button saveItemBtn = FindViewById<Button>(Resource.Id.saveItem);
-                saveItemBtn.Click += SaveItem;
+                saveItemBtn.Click += OnAddItemButtonClicked;
 
                 _imageView = FindViewById<ImageView>(Resource.Id.imageView1);
             }
 
+        }
+
+        private void OnAddItemButtonClicked(object sender, EventArgs e)
+        {
+            _presenter.OnAddItemButtonClicked();
         }
 
         private async void SaveItem(object sender, EventArgs e)
@@ -66,15 +67,6 @@ namespace PlanetHeart.Droid
             var item = new Item(_labelEditText.Text);
 
             await _sharedItemsGateway.SaveTodoItemAsync(item, true);
-            new AlertDialog.Builder(this)
-            .SetPositiveButton("OK", (senderBtn, args) =>
-            {
-                Finish();
-            })
-            .SetMessage("PresentationItem has been saved")
-            .SetTitle("Thank you!")
-            .Show();
-            
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
@@ -98,7 +90,7 @@ namespace PlanetHeart.Droid
             if (Picture.Bitmap != null)
             {
                 _imageView.SetImageBitmap(Picture.Bitmap);
-               // _label.Visibility = Android.Views.ViewStates.Visible;
+                // _label.Visibility = Android.Views.ViewStates.Visible;
                 _saveButton.Visibility = Android.Views.ViewStates.Visible;
                 Picture.Bitmap = null;
             }
@@ -134,6 +126,11 @@ namespace PlanetHeart.Droid
             intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(Picture.File));
 
             StartActivityForResult(intent, 0);
+        }
+
+        public Item RetrieveItem()
+        {
+            return new Item(_labelEditText.Text);
         }
     }
 }

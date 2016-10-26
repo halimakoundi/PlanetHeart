@@ -35,7 +35,21 @@ namespace PlanetHeartPCL.Infrastructure
 
         public void Add(Item item)
         {
-            throw new NotImplementedException();
+            var json = JsonConvert.SerializeObject(item);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = BaseAddress;
+                using (HttpResponseMessage httpResponse = httpClient.PostAsync("api/item/post", content).Result)
+                {
+                    httpResponse.EnsureSuccessStatusCode();
+                    if (httpResponse.IsSuccessStatusCode)
+                    {
+                        Debug.WriteLine(@" Item successfully saved.");
+                    }
+                }
+            }
         }
 
         public async Task SaveTodoItemAsync(Item item, bool isNewItem = false)

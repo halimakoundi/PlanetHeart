@@ -15,14 +15,14 @@ namespace PlanetHeart.Droid
             int outHeight = options.OutHeight;
             int outWidth = options.OutWidth;
             int inSampleSize = 1;
- inSampleSize = outWidth / width;
+            inSampleSize = outWidth / width;
             //if (outHeight > height )
             //{
             //    inSampleSize = outHeight/height;
             //}
             //if (outWidth > width)
             //{
-               
+
             //}
 
             // Now we will load the image and have BitmapFactory resize it for us.

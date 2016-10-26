@@ -48,8 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddItemFeature.cs" />
-    <Compile Include="ListAllItemsFeature.cs" />
+    <Compile Include="Features\AddItemFeature.cs" />
+    <Compile Include="Features\ListAllItemsFeature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

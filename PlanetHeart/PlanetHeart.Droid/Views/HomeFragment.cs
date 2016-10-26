@@ -1,13 +1,13 @@
 using System.Collections.Generic;
-using Android.Support.V4.App;
 using Android.OS;
+using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
 using PlanetHeartPCL.Domain;
 using PlanetHeartPCL.Infrastructure;
 using PlanetHeartPCL.Presentation;
 
-namespace PlanetHeart.Droid
+namespace PlanetHeart.Droid.Views
 {
     public class HomeFragment : Fragment, IBrowserView
     {
