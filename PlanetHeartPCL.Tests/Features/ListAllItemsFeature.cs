@@ -5,7 +5,7 @@ using NUnit.Framework;
 using PlanetHeartPCL.Domain;
 using PlanetHeartPCL.Presentation;
 
-namespace PlanetHeartPCL.Tests
+namespace PlanetHeartPCL.Tests.Features
 {
     public class ListAllItemsFeature
     {
