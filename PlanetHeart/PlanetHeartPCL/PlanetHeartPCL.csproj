@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Presentation\Navigator.cs" />
+    <Compile Include="Presentation\INavigator.cs" />
+    <Compile Include="Presentation\AddItemPresenter.cs" />
     <Compile Include="Domain\IItemsGateway.cs" />
     <Compile Include="Domain\GetItemsInteractor.cs" />
     <Compile Include="Domain\IInteractor.cs" />

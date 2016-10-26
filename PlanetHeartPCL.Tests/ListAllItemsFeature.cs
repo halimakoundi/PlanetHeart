@@ -10,11 +10,9 @@ namespace PlanetHeartPCL.Tests
     public class ListAllItemsFeature
     {
         private IItemsGateway _itemsGateway;
-        private Executor _executor;
-        private GetItemsInteractor _getItemsInteractor;
         private IBrowserView _view;
-        private HomeFragmentPresenter _homeFragmentPresenter;
-        private ItemMapper _maper;
+        private HomeFragmentPresenter _presenter;
+        private ItemMapper _itemsMaper;
         private readonly Items _items = new Items(new List<Item>() {new Item("Stuff"),
                  new Item("wooden chair") ,
                  new Item("wooden table") });
@@ -24,26 +22,27 @@ namespace PlanetHeartPCL.Tests
         public void SetUp()
         {
             _itemsGateway = Substitute.For<IItemsGateway>();
-            _getItemsInteractor = new GetItemsInteractor(_itemsGateway);
-            _executor = new Executor();
-            _maper = new ItemMapper();
-            _view = Substitute.For <IBrowserView>();
-            _homeFragmentPresenter = new HomeFragmentPresenter(_getItemsInteractor,_executor,_view,_maper);
+            _itemsMaper = new ItemMapper();
+            _view = Substitute.For<IBrowserView>();
+            _presenter = new HomeFragmentPresenter(new GetItemsInteractor(_itemsGateway),
+                                                    new Executor(),
+                                                    _view,
+                                                    _itemsMaper);
         }
 
         [Test]
-        public void request_all_items_from_items_gateway()
+        public void list_all_items_when_home_view_is_ready()
         {
             GivenItems();
 
-            _homeFragmentPresenter.OnViewReady();
+            _presenter.OnViewReady();
 
-            _view.Received().Display(Arg.Is<List<PresentationItem>>(items => ExpectedItems().SequenceEqual(items)));
+            _view.Received().Display(ExpectedItems());
         }
 
         private List<PresentationItem> ExpectedItems()
         {
-            return _maper.Map(_items.All());
+            return Arg.Is<List<PresentationItem>>(items => _itemsMaper.Map(_items.All()).SequenceEqual(items));
         }
 
         private void GivenItems()

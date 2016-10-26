@@ -19,19 +19,23 @@ namespace PlanetHeartPCL.Infrastructure
 
         public Items GetAllItems()
         {
-            //using (HttpClient httpClient = new HttpClient())
-            //{
-            //    httpClient.BaseAddress = BaseAddress;
-            //    using (HttpResponseMessage httpResponse = httpClient.GetAsync("api/item").Result)
-            //    {
-            //        httpResponse.EnsureSuccessStatusCode();
-            //        var result = httpResponse.Content.ReadAsStringAsync().Result;
-            //        var items = JsonConvert.DeserializeObject<List<Item>>(result);
-            //        return new Items(items);
-            //    }
-            //}
-            return new Items(new List<Item>() {new Item("Stuff"), new Item("wooden chair") , new Item("wooden table") });
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = BaseAddress;
+                using (HttpResponseMessage httpResponse = httpClient.GetAsync("api/item").Result)
+                {
+                    httpResponse.EnsureSuccessStatusCode();
+                    var result = httpResponse.Content.ReadAsStringAsync().Result;
+                    var items = JsonConvert.DeserializeObject<List<Item>>(result);
+                    return new Items(items);
+                }
+            }
 
+        }
+
+        public void Add(Item item)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task SaveTodoItemAsync(Item item, bool isNewItem = false)
