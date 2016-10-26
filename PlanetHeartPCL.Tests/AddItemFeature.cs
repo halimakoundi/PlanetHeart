@@ -18,8 +18,11 @@ namespace PlanetHeartPCL.Tests
         {
             _itemsGateway = Substitute.For<IItemsGateway>();
             _view = Substitute.For<IAddItemView>();
-            _addItemPresenter = new AddItemPresenter(new AddItemInteractor(_view, _itemsGateway),new Executor());
             _navigator = Substitute.For<INavigator>();
+            _addItemPresenter = new AddItemPresenter(
+                                        new AddItemInteractor(_view, _itemsGateway),
+                                        new Executor(),
+                                        _navigator);
         }
 
         [Test]

@@ -7,11 +7,13 @@ namespace PlanetHeartPCL.Presentation
     {
         private readonly AddItemInteractor _addItemInteractor;
         private readonly Executor _executor;
+        private INavigator _navigator;
 
-        public AddItemPresenter(AddItemInteractor addItemInteractor, Executor executor)
+        public AddItemPresenter(AddItemInteractor addItemInteractor, Executor executor, INavigator navigator)
         {
             _addItemInteractor = addItemInteractor;
             _executor = executor;
+            _navigator = navigator;
         }
 
         public void OnAddItemButtonClicked()
@@ -25,7 +27,7 @@ namespace PlanetHeartPCL.Presentation
         {
             return () =>
             {
-                throw  new NotImplementedException();
+                _navigator.NavigateTo(Screen.Reward);
             };
         }
     }
