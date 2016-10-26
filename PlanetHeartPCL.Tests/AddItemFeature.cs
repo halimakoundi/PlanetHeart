@@ -11,20 +11,25 @@ namespace PlanetHeartPCL.Tests
         private IItemsGateway _itemsGateway;
         private AddItemPresenter _addItemPresenter;
         private readonly Item _item = new Item("Test Item");
+        private IAddItemView _view;
 
         [SetUp]
         public void SetUp()
         {
             _itemsGateway = Substitute.For<IItemsGateway>();
-            _addItemPresenter = new AddItemPresenter();
-            _navigator = new Navigator();
+            _view = Substitute.For<IAddItemView>();
+            _addItemPresenter = new AddItemPresenter(new AddItemInteractor(_view, _itemsGateway),new Executor());
+            _navigator = Substitute.For<INavigator>();
         }
 
         [Test]
         public void add_an_item_when_item_saved()
         {
+            _view.RetrieveItem().Returns(_item);
+
             _addItemPresenter.OnAddItemButtonClicked();
 
+            _view.Received().RetrieveItem();
             _itemsGateway.Received().Add(_item);
             _navigator.Received().NavigateTo(Screen.Reward);
         }
