@@ -4,9 +4,9 @@ namespace PlanetHeartPCL.Presentation
     {
         public string Title { get; }
         public string AddedBy { get; }
-        public int ImageResourceId { get; }
+        public string ImageResourceId { get; }
 
-        public PresentationItem(string title, string addedBy, int imageResourceId)
+        public PresentationItem(string title, string addedBy, string imageResourceId)
         {
             Title = title;
             AddedBy = addedBy;
@@ -34,7 +34,7 @@ namespace PlanetHeartPCL.Presentation
             {
                 var hashCode = (Title != null ? Title.GetHashCode() : 0);
                 hashCode = (hashCode*397) ^ (AddedBy != null ? AddedBy.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ ImageResourceId;
+                hashCode = (hashCode*397) ^ ImageResourceId.GetHashCode();
                 return hashCode;
             }
         }

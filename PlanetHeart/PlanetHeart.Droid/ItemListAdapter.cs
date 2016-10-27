@@ -38,7 +38,7 @@ namespace PlanetHeart.Droid
             addedBy.Text = item.AddedBy;
             var title = _view.FindViewById<TextView>(Resource.Id.Text2);
             title.Text = item.Title;
-            _view.FindViewById<ImageView>(Resource.Id.itemimage).SetImageResource(item.ImageResourceId);
+           // _view.FindViewById<ImageView>(Resource.Id.itemimage).SetImageResource(item.ImageResourceId);
             return _view;
         }
     }

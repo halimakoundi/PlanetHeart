@@ -18,6 +18,7 @@ namespace PlanetHeart.Droid.Views
         {
             base.OnCreate(savedInstanceState);
             _presenter = new HomeFragmentPresenter(new GetItemsInteractor( new ItemsGateway()), new Executor(), this, new ItemMapper());
+
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

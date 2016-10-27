@@ -5,6 +5,7 @@
   <string name="browseItems">browse Items</string>
   <string name="addItem">Add an Item</string>
   <string name="saveItem">Save Item</string>
+  <string name="backToHome">Home</string>
   <string name="addLabel">Add a Label Please</string>
   <string name="getallItems">View all</string>
   <string name="app_name">Awesome Junk</string>
