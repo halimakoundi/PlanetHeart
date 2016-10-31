@@ -45,7 +45,8 @@ namespace PlanetHeart.Droid
             mediaScanIntent.SetData(contentUri);
             SendBroadcast(mediaScanIntent);
 
-            _app.ShowPicture(File.Path);
+           // _app.ShowPicture(File.Path);
+            _app.ShowPicture("ic_photo.png");
             base.OnActivityResult(requestCode, resultCode, data);
         }
     }
