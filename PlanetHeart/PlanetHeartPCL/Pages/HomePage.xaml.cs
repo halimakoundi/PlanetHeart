@@ -1,60 +1,72 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using PlanetHeartPCL.Presentation;
 using Xamarin.Forms;
 
 namespace PlanetHeartPCL.Pages
 {
     public partial class HomePage : BaseContentPage
     {
-        public static ObservableCollection<string> Items { get; set; }
+        public static ObservableCollection<PresentationItem> Items { get; set; }
         public HomePage()
         {
-            Items = new ObservableCollection<string>() { "speaker", "pen", "lamp", "monitor", "bag", "book", "cap", "tote", "floss", "phone" };
+            Items = new ObservableCollection<PresentationItem>
+                        {
+                            new PresentationItem("Coffee table", "A Kitten", "image_placeholder.png"),
+                            new PresentationItem("Office Chair", "John Doe", "image_placeholder.png")
+                        };
             InitializeComponent();
         }
 
-        void OnSelection(object sender, SelectedItemChangedEventArgs e)
+        private void OnSelection(object sender, SelectedItemChangedEventArgs e)
         {
-            if (e.SelectedItem == null)
+            if (ItemIsBeingDesected(e))
             {
-                return; //ItemSelected is called on deselection, which results in SelectedItem being set to null
+                return;
             }
-            DisplayAlert("Item Selected", e.SelectedItem.ToString(), "Ok");
-            //comment out if you want to keep selections
-            ListView lst = (ListView)sender;
+            var lst = (ListView)sender;
             lst.SelectedItem = null;
         }
 
-        void OnRefresh(object sender, EventArgs e)
+        private static bool ItemIsBeingDesected(SelectedItemChangedEventArgs e)
+        {
+            return e.SelectedItem == null;
+        }
+
+        public void OnRefresh(object sender, EventArgs e)
         {
             var list = (ListView)sender;
-            //put your refreshing logic here
             var itemList = Items.Reverse().ToList();
             Items.Clear();
             foreach (var s in itemList)
             {
                 Items.Add(s);
             }
-            //make sure to end the refresh state
+            EndRefreshState(list);
+        }
+
+        private static void EndRefreshState(ListView list)
+        {
             list.IsRefreshing = false;
         }
 
-        void OnTap(object sender, ItemTappedEventArgs e)
+        public void OnTap(object sender, ItemTappedEventArgs e)
         {
             DisplayAlert("Item Tapped", e.Item.ToString(), "Ok");
         }
 
-        void OnMore(object sender, EventArgs e)
+        private void OnMore(object sender, EventArgs e)
         {
             var item = (MenuItem)sender;
             DisplayAlert("More Context Action", item.CommandParameter + " more context action", "OK");
         }
 
-        void OnDelete(object sender, EventArgs e)
+        private void OnDelete(object sender, EventArgs e)
         {
             var item = (MenuItem)sender;
-            Items.Remove(item.CommandParameter.ToString());
+
+            DisplayAlert("Item to delete ", item.ToString(), "Ok");
         }
 
     }

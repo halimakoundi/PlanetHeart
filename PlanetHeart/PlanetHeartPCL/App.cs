@@ -1,10 +1,14 @@
-﻿using PlanetHeartPCL.Pages;
+﻿using System;
+using PlanetHeartPCL.Pages;
 using Xamarin.Forms;
 
 namespace PlanetHeartPCL
 {
     public class App : Application
     {
+        public event Action ShouldTakePicture = () => { };
+        public event Action<string> ShouldShowPicture = (filepath) => { };
+
         public App()
         {
             MainPage = new NavigationPage(new MainPage());
@@ -20,6 +24,16 @@ namespace PlanetHeartPCL
 
         protected override void OnResume()
         {
+        }
+
+        public void TakePicture()
+        {
+            ShouldTakePicture();
+        }
+
+        public void ShowPicture(string filepath)
+        {
+            ShouldShowPicture(filepath);
         }
     }
 }

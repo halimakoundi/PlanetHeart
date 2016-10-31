@@ -36,6 +36,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Infrastructure\CameraResult.cs" />
+    <Compile Include="Infrastructure\ICameraProvider.cs" />
     <Compile Include="Pages\AddItemPage.xaml.cs">
       <DependentUpon>AddItemPage.xaml</DependentUpon>
     </Compile>
@@ -62,8 +64,10 @@
     <Compile Include="Presentation\Executor.cs" />
     <Compile Include="Presentation\ItemMapper.cs" />
     <Compile Include="Domain\Items.cs" />
-    <Compile Include="Presentation\HomeFragmentPresenter.cs" />
+    <Compile Include="Presentation\HomePagePresenter.cs" />
+    <Compile Include="Presentation\ObservableObject.cs" />
     <Compile Include="Presentation\PresentationItem.cs" />
+    <Compile Include="Presentation\TakePictureViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

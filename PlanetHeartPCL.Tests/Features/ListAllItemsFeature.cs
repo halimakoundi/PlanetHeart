@@ -11,7 +11,7 @@ namespace PlanetHeartPCL.Tests.Features
     {
         private IItemsGateway _itemsGateway;
         private IBrowserView _view;
-        private HomeFragmentPresenter _presenter;
+        private HomePagePresenter _presenter;
         private ItemMapper _itemsMaper;
         private readonly Items _items = new Items(new List<Item>() {new Item("Stuff"),
                  new Item("wooden chair") ,
@@ -24,7 +24,7 @@ namespace PlanetHeartPCL.Tests.Features
             _itemsGateway = Substitute.For<IItemsGateway>();
             _itemsMaper = new ItemMapper();
             _view = Substitute.For<IBrowserView>();
-            _presenter = new HomeFragmentPresenter(new GetItemsInteractor(_itemsGateway),
+            _presenter = new HomePagePresenter(new GetItemsInteractor(_itemsGateway),
                                                     new Executor(),
                                                     _view,
                                                     _itemsMaper);

@@ -11,22 +11,34 @@
                 Android="20, 20, 20, 20"
                 WinPhone="20, 20, 20, 20" />
   </ContentPage.Padding>
-    <ListView ItemsSource="{x:Static pages:HomePage.Items}" ItemSelected="OnSelection" ItemTapped="OnTap" IsPullToRefreshEnabled="true" Refreshing="OnRefresh">
+  <ScrollView>
+    <ListView ItemsSource="{x:Static pages:HomePage.Items}" RowHeight="260" ItemSelected="OnSelection" ItemTapped="OnTap" IsPullToRefreshEnabled="true" Refreshing="OnRefresh">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
-            <ViewCell.ContextActions>
-              <!-- CommandParameter is the command to pass to the clicked event handler. Because these are menu items, 
-							not cells managed by the ListView, CommandParameter is neccesary to determine which 
-							cell the context action was taken on. -->
-              <MenuItem Clicked="OnMore" Text="More" CommandParameter="{Binding .}" />
-              <MenuItem Clicked="OnDelete" Text="Delete" IsDestructive="true" CommandParameter="{Binding .}" />
-            </ViewCell.ContextActions>
-            <StackLayout Padding="15,0">
-              <Label Text="{Binding .}" />
+            <StackLayout Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="White">
+              
+              <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
+                <Image Source="icon" HeightRequest="50" WidthRequest="50" HorizontalOptions="Start" VerticalOptions="Center" />
+                <StackLayout Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="Center" >
+                  <Label Text = "{Binding AddedBy}" FontAttributes="Bold" VerticalOptions="Start" />
+                  <Label Text = "2 hours ago" VerticalOptions="End" />
+                </StackLayout>
+                <Button HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" Image="icon_favourite"/>
+              </StackLayout>
+              <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
+                <Image Source="{Binding ImageResourceId}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HeightRequest="100" />
+              </StackLayout>
+              <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
+                <Button Image="icon_marker" BackgroundColor="Transparent" HorizontalOptions="Start" />
+                <Button Image="icon_condition" HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" />
+                <Button Image="icon_share" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" />
+              </StackLayout>
+            
             </StackLayout>
           </ViewCell>
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
+  </ScrollView>
 </pages:BaseContentPage>

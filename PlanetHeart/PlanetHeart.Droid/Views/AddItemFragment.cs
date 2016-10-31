@@ -51,24 +51,28 @@ namespace PlanetHeart.Droid.Views
             Uri contentUri = Uri.FromFile(Picture.File);
             mediaScanIntent.SetData(contentUri);
             Activity.SendBroadcast(mediaScanIntent);
+            ResizePicture();
+            SetImageSource();
 
-            // Display in ImageView. We will resize the bitmap to fit the display
-            // Loading the full sized image will consume too much memory 
-            // and cause the application to crash.
+            base.OnActivityResult(requestCode, resultCode, data);
+        }
 
-            int height = Resources.DisplayMetrics.HeightPixels;
-            int width = _imageView.Height;
-            Picture.Bitmap = Picture.File.Path.LoadAndResizeBitmap(width, height);
+        private void SetImageSource()
+        {
             if (Picture.Bitmap != null)
             {
                 _imageView.SetImageBitmap(Picture.Bitmap);
-                // _label.Visibility = Android.Views.ViewStates.Visible;
                 _saveButton.Visibility = Android.Views.ViewStates.Visible;
                 Picture.Bitmap = null;
             }
-
             GC.Collect();
-            base.OnActivityResult(requestCode, resultCode, data);
+        }
+
+        private void ResizePicture()
+        {
+            int height = Resources.DisplayMetrics.HeightPixels;
+            int width = _imageView.Height;
+            Picture.Bitmap = Picture.File.Path.LoadAndResizeBitmap(width, height);
         }
 
         private void OnAddItemButtonClicked(object sender, EventArgs e)

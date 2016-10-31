@@ -11,13 +11,13 @@ namespace PlanetHeart.Droid.Views
 {
     public class HomeFragment : Fragment, IBrowserView
     {
-        private HomeFragmentPresenter _presenter;
+        private HomePagePresenter _presenter;
         private ListView _listView;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            _presenter = new HomeFragmentPresenter(new GetItemsInteractor( new ItemsGateway()), new Executor(), this, new ItemMapper());
+            _presenter = new HomePagePresenter(new GetItemsInteractor( new ItemsGateway()), new Executor(), this, new ItemMapper());
 
         }
 
