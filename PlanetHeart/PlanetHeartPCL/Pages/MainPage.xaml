@@ -5,6 +5,6 @@
              x:Class="PlanetHeartPCL.Pages.MainPage">
 
   <pages:HomePage Title="Home" Icon="ic_home"/>
-  <pages:AddItemPage Title="Add" Icon="icon_camera" />
-  <pages:FavouritesPage Icon="icon_favourite" />
+  <pages:AddItemPage Title="Add" Icon="ic_camera" />
+  <pages:FavouritesPage Title="Favorites" Icon="ic_favorite" />
 </TabbedPage>

@@ -17,24 +17,22 @@
         <DataTemplate>
           <ViewCell>
             <StackLayout Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="White">
-              
               <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
-                <Image Source="icon" HeightRequest="50" WidthRequest="50" HorizontalOptions="Start" VerticalOptions="Center" />
+                <Image Source="ic_account" HeightRequest="50" WidthRequest="50" HorizontalOptions="Start" VerticalOptions="Center" />
                 <StackLayout Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="Center" >
                   <Label Text = "{Binding AddedBy}" FontAttributes="Bold" VerticalOptions="Start" />
                   <Label Text = "2 hours ago" VerticalOptions="End" />
                 </StackLayout>
-                <Button HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" Image="icon_favourite"/>
+                <Button HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" Image="ic_favorite"/>
               </StackLayout>
               <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
                 <Image Source="{Binding ImageResourceId}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HeightRequest="100" />
               </StackLayout>
               <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
-                <Button Image="icon_marker" BackgroundColor="Transparent" HorizontalOptions="Start" />
-                <Button Image="icon_condition" HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" />
-                <Button Image="icon_share" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" />
+                <Button Image="ic_place" BackgroundColor="Transparent" HorizontalOptions="Start" />
+                <Button Image="ic_star" HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" />
+                <Button Image="ic_share" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" />
               </StackLayout>
-            
             </StackLayout>
           </ViewCell>
         </DataTemplate>

@@ -10,13 +10,15 @@ using Xamarin.Forms.Platform.Android;
 
 namespace PlanetHeart.Droid
 {
-    
+
     [Activity(Label = "PlanetHeart", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
           Theme = "@style/AppTheme")]
     public class MainActivity : FormsAppCompatActivity
     {
         private static readonly File File = new File(Environment.GetExternalStoragePublicDirectory(
                                 Environment.DirectoryPictures), "tmp.jpg");
+
+        private App _app;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -26,12 +28,25 @@ namespace PlanetHeart.Droid
 
             Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
+            _app = (Xamarin.Forms.Application.Current as App);
 
-            (Xamarin.Forms.Application.Current as App).ShouldTakePicture += () => {
+            _app.ShouldTakePicture += () =>
+            {
                 var intent = new Intent(MediaStore.ActionImageCapture);
                 intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(File));
                 StartActivityForResult(intent, 0);
             };
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            var mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
+            var contentUri = Uri.FromFile(File);
+            mediaScanIntent.SetData(contentUri);
+            SendBroadcast(mediaScanIntent);
+
+            _app.ShowPicture(File.Path);
+            base.OnActivityResult(requestCode, resultCode, data);
         }
     }
 }
