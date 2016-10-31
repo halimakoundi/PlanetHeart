@@ -11,6 +11,8 @@ namespace PlanetHeartPCL.Infrastructure
 {
     public class ItemsGateway : IItemsGateway
     {
+        private Uri BaseAddress { get; }
+
         public ItemsGateway()
         {
             BaseAddress = new Uri("http://awesomejunk.azurewebsites.net/");
@@ -51,28 +53,6 @@ namespace PlanetHeartPCL.Infrastructure
                 }
             }
         }
-
-        public async Task SaveTodoItemAsync(Item item, bool isNewItem = false)
-        {
-            var json = JsonConvert.SerializeObject(item);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            using (HttpClient httpClient = new HttpClient())
-            {
-                httpClient.BaseAddress = BaseAddress;
-                using (HttpResponseMessage httpResponse = await httpClient.PostAsync("api/item/post", content))
-                {
-                    httpResponse.EnsureSuccessStatusCode();
-                    if (httpResponse.IsSuccessStatusCode)
-                    {
-                        Debug.WriteLine(@" Item successfully saved.");
-                    }
-                }
-            }
-
-        }
-
-        public Uri BaseAddress { get; set; }
 
     }
 }

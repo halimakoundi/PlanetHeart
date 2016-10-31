@@ -61,13 +61,6 @@ namespace PlanetHeart.Droid.Views
             _presenter.OnAddItemButtonClicked();
         }
 
-        private async void SaveItem(object sender, EventArgs e)
-        {
-            var item = new Item(_labelEditText.Text);
-
-            await _sharedItemsGateway.SaveTodoItemAsync(item, true);
-        }
-
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
