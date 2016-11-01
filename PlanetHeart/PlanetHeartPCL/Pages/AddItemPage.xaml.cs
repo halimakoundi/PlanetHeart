@@ -13,8 +13,6 @@ namespace PlanetHeartPCL.Pages
             InitializeComponent();
             _app.ShouldShowPicture += ShowImage;
             ItemPicture.GestureRecognizers.Add(new TapGestureRecognizer());
-            ItemPicture.Source = ImageSource.FromFile("///storage/emulated/0/Pictures/PlanetHeart/newgem.jpg");
-
         }
 
         public void ShowImage(string filepath)
@@ -31,7 +29,7 @@ namespace PlanetHeartPCL.Pages
         {
             if (!_pictureHasBeenAdded)
             {
-                //OpenCameraForPicture();
+                OpenCameraForPicture();
             }
             base.OnAppearing();
         }

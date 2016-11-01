@@ -4,7 +4,7 @@
              x:Class="PlanetHeartPCL.Pages.AddItemPage">
   <StackLayout Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="Fill" >
     <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
-      <Image  x:Name="ItemPicture" Source="image_placeholder" HorizontalOptions="Start" VerticalOptions="Center" >
+      <Image  x:Name="ItemPicture" Source="ic_photo" HorizontalOptions="Start" VerticalOptions="Center" >
         <Image.GestureRecognizers>
             <TapGestureRecognizer
                     Tapped="TakePicture"
