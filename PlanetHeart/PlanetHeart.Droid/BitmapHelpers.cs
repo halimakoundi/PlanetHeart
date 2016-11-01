@@ -16,7 +16,8 @@ namespace PlanetHeart.Droid
         {
             var thumbnail = sourceFile.Replace(".jpg", "_thumb.jpg");
 
-            var target = ThumbnailUtils.ExtractThumbnail(sourceFile.LoadBitmap(), reqWidth, reqHeight);
+            var source = sourceFile.LoadBitmap();
+            var target = ThumbnailUtils.ExtractThumbnail(source, reqWidth, reqHeight);
             using (var outStream = System.IO.File.Create(thumbnail))
             {
                 if (thumbnail.ToLower().EndsWith("png"))
@@ -24,6 +25,7 @@ namespace PlanetHeart.Droid
                 else
                     target.Compress(Bitmap.CompressFormat.Jpeg, 95, outStream);
             }
+            source.Recycle();
             target.Recycle();
             return thumbnail;
         }

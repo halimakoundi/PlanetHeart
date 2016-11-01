@@ -48,11 +48,29 @@ namespace PlanetHeart.Droid
             mediaScanIntent.SetData(contentUri);
             SendBroadcast(mediaScanIntent);
 
-            var thumbnail = BitmapHelpers.CreateThumbnail(_file.Path, 350, 350);
+            if (SkipIfNoPicture()) return;
 
-            _app.ShowPicture(thumbnail);
+            DisplayThumbnail();
 
             base.OnActivityResult(requestCode, resultCode, data);
+        }
+
+        private bool SkipIfNoPicture()
+        {
+            if (!NoPictureTaken()) return false;
+            _app.OnNoPicture();
+            return true;
+        }
+
+        private void DisplayThumbnail()
+        {
+            var thumbnail = BitmapHelpers.CreateThumbnail(_file.Path, 350, 350);
+            _app.ShowPicture(thumbnail);
+        }
+
+        private bool NoPictureTaken()
+        {
+            return !System.IO.File.Exists(_file.Path);
         }
 
         private void InitialiseApplication(Bundle bundle)

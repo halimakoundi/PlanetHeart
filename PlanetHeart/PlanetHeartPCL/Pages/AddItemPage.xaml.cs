@@ -12,6 +12,7 @@ namespace PlanetHeartPCL.Pages
         {
             InitializeComponent();
             _app.ShouldShowPicture += ShowImage;
+            _app.NoPicture += NoPictureTaken;
             ItemPicture.GestureRecognizers.Add(new TapGestureRecognizer());
         }
 
@@ -19,17 +20,18 @@ namespace PlanetHeartPCL.Pages
         {
             _pictureHasBeenAdded = true;
             ItemPicture.Source = ImageSource.FromFile(filepath);
-            
-            ItemPicture.BackgroundColor = Color.Aqua;
-            ItemPicture.ScaleTo(2,250,null);
+        }
 
+        public void NoPictureTaken()
+        {
+            Navigation.PushModalAsync(new MainPage());
         }
 
         protected override void OnAppearing()
         {
             if (!_pictureHasBeenAdded)
             {
-                OpenCameraForPicture();
+               // OpenCameraForPicture();
             }
             base.OnAppearing();
         }

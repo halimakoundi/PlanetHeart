@@ -7,6 +7,7 @@ namespace PlanetHeartPCL
     public class App : Application
     {
         public event Action ShouldTakePicture = () => { };
+        public event Action NoPicture = () => { };
         public event Action<string> ShouldShowPicture = (filepath) => { };
 
         public App()
@@ -34,6 +35,11 @@ namespace PlanetHeartPCL
         public void ShowPicture(string filepath)
         {
             ShouldShowPicture(filepath);
+        }
+
+        public virtual void OnNoPicture()
+        {
+            NoPicture();
         }
     }
 }
