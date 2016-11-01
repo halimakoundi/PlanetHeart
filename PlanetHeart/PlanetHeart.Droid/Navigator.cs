@@ -1,7 +1,5 @@
 using System;
 using Android.Content;
-using Android.Provider;
-using PlanetHeart.Droid.Views;
 using PlanetHeartPCL.Presentation;
 
 namespace PlanetHeart.Droid
@@ -17,11 +15,11 @@ namespace PlanetHeart.Droid
 
         public void NavigateTo(Screen screen)
         {
-            var intent = new Android.Content.Intent(_context, typeof(RewardActivity));
-            intent.SetFlags(ActivityFlags.NewTask);
-            intent.AddFlags(ActivityFlags.NoHistory);
+            //var intent = new Android.Content.Intent(_context, typeof(RewardActivity));
+            //intent.SetFlags(ActivityFlags.NewTask);
+            //intent.AddFlags(ActivityFlags.NoHistory);
 
-            _context.StartActivity(intent);
+            //_context.StartActivity(intent);
         }
     }
 }
