@@ -22,8 +22,8 @@ namespace PlanetHeartPCL.Pages
                             new PresentationItem("Office Chair", "John Doe", "image_placeholder.png")
                         };
             _presenter = new HomePagePresenter(new GetItemsInteractor(new ItemsGateway()), new Executor(), this, new ItemMapper());
-            _presenter.OnViewReady();
             InitializeComponent();
+
         }
 
         private void OnSelection(object sender, SelectedItemChangedEventArgs e)
@@ -55,6 +55,11 @@ namespace PlanetHeartPCL.Pages
             list.IsRefreshing = false;
         }
 
+        protected override void OnAppearing()
+        {
+            _presenter.OnViewReady();
+        }
+
         public void OnTap(object sender, ItemTappedEventArgs e)
         {
             DisplayAlert("Item Tapped", e.Item.ToString(), "Ok");
@@ -75,8 +80,12 @@ namespace PlanetHeartPCL.Pages
 
         public void Display(List<PresentationItem> presentationItems)
         {
-            Items = null;
-            Items = new ObservableCollection<PresentationItem>(presentationItems);
+            if (presentationItems != null && presentationItems.Count > 0)
+            {
+                Items = null;
+                Items = new ObservableCollection<PresentationItem>(presentationItems);
+            }
+            ItemsListView.ItemsSource = Items;
         }
     }
 }

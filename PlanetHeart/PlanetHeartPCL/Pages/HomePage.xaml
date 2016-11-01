@@ -12,7 +12,7 @@
                 WinPhone="20, 20, 20, 20" />
   </ContentPage.Padding>
   <ScrollView>
-    <ListView ItemsSource="{x:Static pages:HomePage.Items}" RowHeight="260" ItemSelected="OnSelection" ItemTapped="OnTap" 
+    <ListView x:Name="ItemsListView" RowHeight="260" ItemSelected="OnSelection" ItemTapped="OnTap" 
               IsPullToRefreshEnabled="True" RefreshCommand="{Binding OnRefresh}" Refreshing="OnRefresh">
       <ListView.ItemTemplate>
         <DataTemplate>
