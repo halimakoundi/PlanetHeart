@@ -72,7 +72,7 @@ namespace PlanetHeart.Droid.Views
         {
             int height = Resources.DisplayMetrics.HeightPixels;
             int width = _imageView.Height;
-            Picture.Bitmap = Picture.File.Path.LoadAndResizeBitmap(width, height);
+            Picture.Bitmap = Picture.File.Path.LoadBitmap();
         }
 
         private void OnAddItemButtonClicked(object sender, EventArgs e)

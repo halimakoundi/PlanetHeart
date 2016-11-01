@@ -2,6 +2,7 @@
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.Graphics;
 using Android.OS;
 using Android.Provider;
 using Java.IO;
@@ -9,6 +10,7 @@ using PlanetHeartPCL;
 using Xamarin.Forms.Platform.Android;
 using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
+using Android.Media;
 
 namespace PlanetHeart.Droid
 {
@@ -17,26 +19,22 @@ namespace PlanetHeart.Droid
           Theme = "@style/AppTheme")]
     public class MainActivity : FormsAppCompatActivity
     {
-        private static  File _file = new File(Environment.GetExternalStoragePublicDirectory(
-                                Environment.DirectoryPictures), "tmp.jpg");
-
         private App _app;
+        private File _file;
         private File _dir;
 
         protected override void OnCreate(Bundle bundle)
         {
-            ToolbarResource = Resource.Layout.toolbar;
-
             base.OnCreate(bundle);
 
-            Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App());
-            _app = (Xamarin.Forms.Application.Current as App);
+            InitialiseApplication(bundle);
+
             CreateDirectoryForPictures();
 
             _app.ShouldTakePicture += () =>
             {
                 var intent = new Intent(MediaStore.ActionImageCapture);
+                _file = new File(_dir, $"myPhoto_{Guid.NewGuid()}.jpg");
                 intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(_file));
                 StartActivityForResult(intent, 0);
             };
@@ -44,20 +42,31 @@ namespace PlanetHeart.Droid
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
+
             var mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
             var contentUri = Uri.FromFile(_file);
             mediaScanIntent.SetData(contentUri);
             SendBroadcast(mediaScanIntent);
-            _file = new File(_dir, $"myPhoto_{Guid.NewGuid()}.jpg");
-            _app.ShowPicture(_file.AbsolutePath);
-            //_app.ShowPicture("ic_photo.png");
+
+            var thumbnail = BitmapHelpers.CreateThumbnail(_file.Path, 350, 350);
+
+            _app.ShowPicture(thumbnail);
+
             base.OnActivityResult(requestCode, resultCode, data);
         }
+
+        private void InitialiseApplication(Bundle bundle)
+        {
+            Xamarin.Forms.Forms.Init(this, bundle);
+            LoadApplication(new App());
+            _app = (Xamarin.Forms.Application.Current as App);
+        }
+
         private void CreateDirectoryForPictures()
         {
             _dir = new File(
                 Environment.GetExternalStoragePublicDirectory(
-                    Environment.DirectoryPictures), "CameraAppDemo");
+                    Environment.DirectoryPictures), "PlanetHeart");
             if (!_dir.Exists())
             {
                 _dir.Mkdirs();
