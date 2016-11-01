@@ -6,7 +6,7 @@ namespace PlanetHeartPCL.Pages
     public partial class AddItemPage
     {
         private readonly App _app = (Xamarin.Forms.Application.Current as App);
-        private bool _pictureHasBeenAdded;
+        private bool _openCameraOnAppearing=true;
 
         public AddItemPage()
         {
@@ -18,20 +18,21 @@ namespace PlanetHeartPCL.Pages
 
         public void ShowImage(string filepath)
         {
-            _pictureHasBeenAdded = true;
+            _openCameraOnAppearing = false;
             ItemPicture.Source = ImageSource.FromFile(filepath);
         }
 
         public void NoPictureTaken()
         {
+            _openCameraOnAppearing = false;
             Navigation.PushModalAsync(new MainPage());
         }
 
         protected override void OnAppearing()
         {
-            if (!_pictureHasBeenAdded)
+            if (_openCameraOnAppearing)
             {
-               // OpenCameraForPicture();
+                OpenCameraForPicture();
             }
             base.OnAppearing();
         }
