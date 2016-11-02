@@ -1,4 +1,6 @@
-﻿using PlanetHeartPCL.Domain;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using PlanetHeartPCL.Domain;
 
 namespace PlanetHeartPCL.Presentation
 {
@@ -6,7 +8,10 @@ namespace PlanetHeartPCL.Presentation
     {
         public void Execute(IInteractor interaction)
         {
-            interaction.Execute();
+            Task.Factory.StartNew(interaction.Execute, 
+                                    CancellationToken.None, 
+                                    TaskCreationOptions.DenyChildAttach, 
+                                    TaskScheduler.Default);
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using PlanetHeartPCL.Domain;
 
@@ -21,10 +20,10 @@ namespace PlanetHeartPCL.Infrastructure
 
         public Items GetAllItems()
         {
-            using (HttpClient httpClient = new HttpClient())
+            using (var httpClient = new HttpClient())
             {
                 httpClient.BaseAddress = BaseAddress;
-                using (HttpResponseMessage httpResponse = httpClient.GetAsync("api/item").Result)
+                using (var httpResponse = httpClient.GetAsync("api/item").Result)
                 {
                     httpResponse.EnsureSuccessStatusCode();
                     var result = httpResponse.Content.ReadAsStringAsync().Result;

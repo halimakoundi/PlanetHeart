@@ -85,7 +85,10 @@ namespace PlanetHeartPCL.Pages
                 Items = null;
                 Items = new ObservableCollection<PresentationItem>(presentationItems);
             }
-            ItemsListView.ItemsSource = Items;
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                ItemsListView.ItemsSource = Items;
+            });
         }
     }
 }
