@@ -25,6 +25,7 @@ namespace PlanetHeartPCL.Pages
         public void NoPictureTaken()
         {
             _openCameraOnAppearing = false;
+            var homePage = Navigation.NavigationStack[0];
             Navigation.PushModalAsync(new MainPage());
         }
 

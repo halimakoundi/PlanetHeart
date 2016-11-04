@@ -10,20 +10,17 @@ namespace PlanetHeartPCL.Infrastructure
 {
     public class ItemsGateway : IItemsGateway
     {
-        private Uri BaseAddress { get; }
-
-        public ItemsGateway()
-        {
-            BaseAddress = new Uri("http://awesomejunk.azurewebsites.net/");
-
-        }
+        private readonly Uri _baseAddress = new Uri("http://awesomejunk.azurewebsites.net/");
+        private const string ItemApiEndPoint = "api/item";
+        private const string ApiItemPostEndPoint = "api/item/post";
+        private const string ItemSaved = @" Item successfully saved.";
 
         public Items GetAllItems()
         {
             using (var httpClient = new HttpClient())
             {
-                httpClient.BaseAddress = BaseAddress;
-                using (var httpResponse = httpClient.GetAsync("api/item").Result)
+                httpClient.BaseAddress = _baseAddress;
+                using (var httpResponse = httpClient.GetAsync(ItemApiEndPoint).Result)
                 {
                     httpResponse.EnsureSuccessStatusCode();
                     var result = httpResponse.Content.ReadAsStringAsync().Result;
@@ -39,15 +36,15 @@ namespace PlanetHeartPCL.Infrastructure
             var json = JsonConvert.SerializeObject(item);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            using (HttpClient httpClient = new HttpClient())
+            using (var httpClient = new HttpClient())
             {
-                httpClient.BaseAddress = BaseAddress;
-                using (HttpResponseMessage httpResponse = httpClient.PostAsync("api/item/post", content).Result)
+                httpClient.BaseAddress = _baseAddress;
+                using (var httpResponse = httpClient.PostAsync(ApiItemPostEndPoint, content).Result)
                 {
                     httpResponse.EnsureSuccessStatusCode();
                     if (httpResponse.IsSuccessStatusCode)
                     {
-                        Debug.WriteLine(@" Item successfully saved.");
+                        Debug.WriteLine(ItemSaved);
                     }
                 }
             }

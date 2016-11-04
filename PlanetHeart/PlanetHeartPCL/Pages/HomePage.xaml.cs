@@ -44,7 +44,6 @@ namespace PlanetHeartPCL.Pages
         public void OnRefresh(object sender, EventArgs e)
         {
             var list = (ListView)sender;
-            Items.Clear();
             _presenter.OnViewReady();
 
             EndRefreshState(list);
