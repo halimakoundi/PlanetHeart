@@ -4,13 +4,13 @@ namespace PlanetHeartPCL.Presentation
     {
         public string Title { get; }
         public string AddedBy { get; }
-        public string ImageResourceId { get; }
+        public string ImageUrl { get; }
 
-        public PresentationItem(string title, string addedBy, string imageResourceId)
+        public PresentationItem(string title, string addedBy, string imageUrl)
         {
             Title = title;
             AddedBy = addedBy;
-            ImageResourceId = imageResourceId;
+            ImageUrl = imageUrl;
         }
 
         public override string ToString()
@@ -25,7 +25,7 @@ namespace PlanetHeartPCL.Presentation
 
         protected bool Equals(PresentationItem other)
         {
-            return string.Equals(Title, other.Title) && string.Equals(AddedBy, other.AddedBy) && ImageResourceId == other.ImageResourceId;
+            return string.Equals(Title, other.Title) && string.Equals(AddedBy, other.AddedBy) && ImageUrl == other.ImageUrl;
         }
 
         public override int GetHashCode()
@@ -34,7 +34,7 @@ namespace PlanetHeartPCL.Presentation
             {
                 var hashCode = Title?.GetHashCode() ?? 0;
                 hashCode = (hashCode*397) ^ (AddedBy?.GetHashCode() ?? 0);
-                hashCode = (hashCode*397) ^ ImageResourceId.GetHashCode();
+                hashCode = (hashCode*397) ^ ImageUrl.GetHashCode();
                 return hashCode;
             }
         }

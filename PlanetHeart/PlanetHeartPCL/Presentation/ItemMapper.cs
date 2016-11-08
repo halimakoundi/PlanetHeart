@@ -8,7 +8,7 @@ namespace PlanetHeartPCL.Presentation
     {
         public PresentationItem Map(Item item)
         {
-            return new PresentationItem($"{item.Type}", "Admin", "");
+            return new PresentationItem($"{item.Type}", "Admin", item.Picture);
         }
 
         public List<PresentationItem> Map(List<Item> items)

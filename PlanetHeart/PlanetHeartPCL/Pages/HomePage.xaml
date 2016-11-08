@@ -27,7 +27,7 @@
                 <Button HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" Image="ic_favorite"/>
               </StackLayout>
               <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
-                <Image Source="{Binding ImageResourceId}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HeightRequest="100" />
+                <Image Source="{Binding ImageUrl}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HeightRequest="100" />
               </StackLayout>
               <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
                 <Button Image="ic_place" BackgroundColor="Transparent" HorizontalOptions="Start" />
