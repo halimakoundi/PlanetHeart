@@ -57,7 +57,7 @@
     <Compile Include="Presentation\INavigator.cs" />
     <Compile Include="Presentation\AddItemPresenter.cs" />
     <Compile Include="Domain\IItemsGateway.cs" />
-    <Compile Include="Domain\GetItemsInteractor.cs" />
+    <Compile Include="Presentation\GetItemsInteractor.cs" />
     <Compile Include="Domain\IInteractor.cs" />
     <Compile Include="Domain\Item.cs" />
     <Compile Include="Infrastructure\ItemsGateway.cs" />
@@ -65,6 +65,7 @@
     <Compile Include="Presentation\ItemMapper.cs" />
     <Compile Include="Domain\Items.cs" />
     <Compile Include="Presentation\HomePagePresenter.cs" />
+    <Compile Include="Presentation\Navigator.cs" />
     <Compile Include="Presentation\ObservableObject.cs" />
     <Compile Include="Presentation\PresentationItem.cs" />
     <Compile Include="Presentation\TakePictureViewModel.cs" />

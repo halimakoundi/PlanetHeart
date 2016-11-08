@@ -64,7 +64,11 @@ namespace PlanetHeart.Droid
 
         private void DisplayThumbnail()
         {
-            var thumbnail = BitmapHelpers.CreateThumbnail(_file.Path, 350, 350);
+            var exif = new ExifInterface(_file.Path);
+            var exifOrientation = exif.GetAttribute(ExifInterface.TagOrientation);
+            int rotate = 0;
+
+            var thumbnail = BitmapHelpers.CreateThumbnail(_file.Path, 450, 450);
             _app.ShowPicture(thumbnail);
         }
 

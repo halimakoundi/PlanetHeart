@@ -6,14 +6,43 @@
     <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
       <Image  x:Name="ItemPicture" Source="ic_photo" HorizontalOptions="Start" VerticalOptions="Center" >
         <Image.GestureRecognizers>
-            <TapGestureRecognizer
-                    Tapped="TakePicture"
-                    NumberOfTapsRequired="2" />
+          <TapGestureRecognizer
+                  Tapped="TakePicture"
+                  NumberOfTapsRequired="2" />
         </Image.GestureRecognizers>
+      </Image>
+      <StackLayout Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="Fill">
+        <Label Text="Add a description"></Label>
+        <Editor x:Name="Description" ></Editor>
+      </StackLayout>
+    </StackLayout>
+    <StackLayout Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="Fill">
+      <Entry x:Name="Type" Placeholder="Please enter item category"></Entry>
+      <Entry x:Name="PostCode" Placeholder="Enter Post code"></Entry>
+      <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
+        <Image  x:Name="Star1" Source="ic_star_border" HorizontalOptions="Start" VerticalOptions="Center" >
+          <Image.GestureRecognizers>
+            <TapGestureRecognizer
+                    Tapped="ToggleStar"
+                    NumberOfTapsRequired="1" />
+          </Image.GestureRecognizers>
         </Image>
+        <Image  x:Name="Star2" Source="ic_star_border" HorizontalOptions="Start" VerticalOptions="Center" >
+          <Image.GestureRecognizers>
+            <TapGestureRecognizer
+                    Tapped="ToggleStar"
+                    NumberOfTapsRequired="1" />
+          </Image.GestureRecognizers>
+        </Image>
+        <Image  x:Name="Star3" Source="ic_star_border" HorizontalOptions="Start" VerticalOptions="Center" >
+          <Image.GestureRecognizers>
+            <TapGestureRecognizer
+                    Tapped="ToggleStar"
+                    NumberOfTapsRequired="1" />
+          </Image.GestureRecognizers>
+        </Image>
+      </StackLayout>
     </StackLayout>
-    <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="Fill">
-      <Entry x:Name="Label" Placeholder="Item category"></Entry>
-    </StackLayout>
+    <Button BackgroundColor="Transparent" Text="ADD" HorizontalOptions="EndAndExpand" Clicked="AddItem" />
   </StackLayout>
 </ContentPage>

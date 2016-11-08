@@ -1,16 +1,10 @@
-using System;
-using Android.Content;
-using PlanetHeartPCL.Presentation;
-
-namespace PlanetHeart.Droid
+namespace PlanetHeartPCL.Presentation
 {
     public class Navigator : INavigator
     {
-        private readonly Context _context;
 
-        public Navigator(Context context)
+        public Navigator()
         {
-            _context = context;
         }
 
         public void NavigateTo(Screen screen)
