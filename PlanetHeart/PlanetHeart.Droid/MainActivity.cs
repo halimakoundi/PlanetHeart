@@ -2,7 +2,6 @@
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
-using Android.Graphics;
 using Android.OS;
 using Android.Provider;
 using Java.IO;
@@ -11,6 +10,7 @@ using Xamarin.Forms.Platform.Android;
 using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
 using Android.Media;
+using PlanetHeart.Droid.Infrastructure;
 
 namespace PlanetHeart.Droid
 {
@@ -64,10 +64,6 @@ namespace PlanetHeart.Droid
 
         private void DisplayThumbnail()
         {
-            var exif = new ExifInterface(_file.Path);
-            var exifOrientation = exif.GetAttribute(ExifInterface.TagOrientation);
-            int rotate = 0;
-
             var thumbnail = BitmapHelpers.CreateThumbnail(_file.Path, 450, 450);
             _app.ShowPicture(thumbnail);
         }

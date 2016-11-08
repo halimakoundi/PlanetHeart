@@ -1,7 +1,7 @@
 using Android.Graphics;
 using Android.Media;
 
-namespace PlanetHeart.Droid
+namespace PlanetHeart.Droid.Infrastructure
 {
     public static class BitmapHelpers
     {
