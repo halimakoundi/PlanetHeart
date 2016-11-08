@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using PlanetHeartPCL.Domain;
 using PlanetHeartPCL.Infrastructure;
 using PlanetHeartPCL.Presentation;
@@ -62,19 +61,6 @@ namespace PlanetHeartPCL.Pages
         public void OnTap(object sender, ItemTappedEventArgs e)
         {
             DisplayAlert("Item Tapped", e.Item.ToString(), "Ok");
-        }
-
-        private void OnMore(object sender, EventArgs e)
-        {
-            var item = (MenuItem)sender;
-            DisplayAlert("More Context Action", item.CommandParameter + " more context action", "OK");
-        }
-
-        private void OnDelete(object sender, EventArgs e)
-        {
-            var item = (MenuItem)sender;
-
-            DisplayAlert("Item to delete ", item.ToString(), "Ok");
         }
 
         public void Display(List<PresentationItem> presentationItems)
