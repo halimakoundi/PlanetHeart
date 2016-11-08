@@ -120,26 +120,22 @@ namespace PlanetHeart.Droid.Renderers
 
         private void ClearElement(MainPage element)
         {
-            if (_currentPage != null)
+            if (_currentPage == null) return;
+            var renderer = Platform.GetRenderer(_currentPage);
+
+            if (renderer != null)
             {
-                IVisualElementRenderer renderer = Platform.GetRenderer(_currentPage);
+                renderer.ViewGroup.RemoveFromParent();
+                renderer.ViewGroup.Dispose();
+                renderer.Dispose();
 
-                if (renderer != null)
-                {
-                    renderer.ViewGroup.RemoveFromParent();
-                    renderer.ViewGroup.Dispose();
-                    renderer.Dispose();
-
-                    _currentPage = null;
-                }
-
-                if (_bottomBar != null)
-                {
-                    _bottomBar.RemoveFromParent();
-                    _bottomBar.Dispose();
-                    _bottomBar = null;
-                }
+                _currentPage = null;
             }
+
+            if (_bottomBar == null) return;
+            _bottomBar.RemoveFromParent();
+            _bottomBar.Dispose();
+            _bottomBar = null;
         }
 
         private BottomBar CreateBottomBar(IEnumerable<Page> pageIntents)

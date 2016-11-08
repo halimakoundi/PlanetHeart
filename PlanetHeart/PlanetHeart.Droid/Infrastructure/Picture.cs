@@ -12,12 +12,12 @@ namespace PlanetHeart.Droid.Infrastructure
 
         public static void CreateDirectory()
         {
-            Picture.Dir = new File(
+            Dir = new File(
                 Environment.GetExternalStoragePublicDirectory(
                     Environment.DirectoryPictures), "PlanetHeart");
-            if (!Picture.Dir.Exists())
+            if (!Dir.Exists())
             {
-                Picture.Dir.Mkdirs();
+                Dir.Mkdirs();
             }
         }
     }
