@@ -1,6 +1,7 @@
 using System;
+using PlanetHeartPCL.Domain;
 
-namespace PlanetHeartPCL.Domain
+namespace PlanetHeartPCL.Presentation
 {
     public class GetItemsInteractor : IInteractor
     {

@@ -66,9 +66,7 @@
     <Compile Include="Domain\Items.cs" />
     <Compile Include="Presentation\HomePagePresenter.cs" />
     <Compile Include="Presentation\Navigator.cs" />
-    <Compile Include="Presentation\ObservableObject.cs" />
     <Compile Include="Presentation\PresentationItem.cs" />
-    <Compile Include="Presentation\TakePictureViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -3,17 +3,9 @@ namespace PlanetHeartPCL.Presentation
     public class Navigator : INavigator
     {
 
-        public Navigator()
-        {
-        }
-
         public void NavigateTo(Screen screen)
         {
-            //var intent = new Android.Content.Intent(_context, typeof(RewardActivity));
-            //intent.SetFlags(ActivityFlags.NewTask);
-            //intent.AddFlags(ActivityFlags.NoHistory);
-
-            //_context.StartActivity(intent);
+            //TODO find a way to navigate to a page with xamarin forms
         }
     }
 }
