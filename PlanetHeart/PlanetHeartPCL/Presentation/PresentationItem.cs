@@ -32,8 +32,8 @@ namespace PlanetHeartPCL.Presentation
         {
             unchecked
             {
-                var hashCode = (Title != null ? Title.GetHashCode() : 0);
-                hashCode = (hashCode*397) ^ (AddedBy != null ? AddedBy.GetHashCode() : 0);
+                var hashCode = Title?.GetHashCode() ?? 0;
+                hashCode = (hashCode*397) ^ (AddedBy?.GetHashCode() ?? 0);
                 hashCode = (hashCode*397) ^ ImageResourceId.GetHashCode();
                 return hashCode;
             }
