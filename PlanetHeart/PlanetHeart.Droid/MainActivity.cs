@@ -9,7 +9,6 @@ using PlanetHeartPCL;
 using Xamarin.Forms.Platform.Android;
 using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
-using Android.Media;
 using PlanetHeart.Droid.Infrastructure;
 
 namespace PlanetHeart.Droid
