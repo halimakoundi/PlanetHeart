@@ -20,7 +20,7 @@ namespace PlanetHeartPCL.Pages
             _app.ShouldShowPicture += ShowImage;
             _app.NoPicture += NoPictureTaken;
             ItemPicture.GestureRecognizers.Add(new TapGestureRecognizer());
-            _presenter = new AddItemPresenter(new AddItemInteractor(this, new ItemsGateway()),new Executor(), new Navigator() );
+            _presenter = new AddItemPresenter(new AddItemInteractor(this, new ItemsGateway()),new Executor(), new Navigator(Navigation) );
         }
 
         public void ShowImage(string filepath)
@@ -32,8 +32,7 @@ namespace PlanetHeartPCL.Pages
         public void NoPictureTaken()
         {
             _openCameraOnAppearing = false;
-            var homePage = Navigation.NavigationStack[0];
-            Navigation.PushModalAsync(new MainPage());
+            Navigation.PopAsync();
         }
 
         public Item RetrieveItem()
@@ -70,7 +69,7 @@ namespace PlanetHeartPCL.Pages
         {
             var ratingStar = (Image) sender;
 
-            ratingStar.Source = ((Xamarin.Forms.FileImageSource)ratingStar.Source).File == EmptyStar ? FullStar : EmptyStar;
+            ratingStar.Source = ((FileImageSource)ratingStar.Source).File == EmptyStar ? FullStar : EmptyStar;
         }
 
         private void AddItem(object sender, EventArgs eventArgs)
