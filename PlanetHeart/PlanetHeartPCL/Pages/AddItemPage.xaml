@@ -13,7 +13,7 @@
       </Image>
       <StackLayout Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="Fill">
         <Label Text="Add a description"></Label>
-        <Editor x:Name="Description" ></Editor>
+        <Editor x:Name="Description" WidthRequest="200" HeightRequest="100"></Editor>
       </StackLayout>
     </StackLayout>
     <StackLayout Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="Fill">
