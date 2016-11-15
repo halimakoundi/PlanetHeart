@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Net.Http;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -10,6 +12,7 @@ using Xamarin.Forms.Platform.Android;
 using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
 using PlanetHeart.Droid.Infrastructure;
+using File = Java.IO.File;
 
 namespace PlanetHeart.Droid
 {
@@ -48,6 +51,11 @@ namespace PlanetHeart.Droid
             SendBroadcast(mediaScanIntent);
 
             if (SkipIfNoPicture()) return;
+
+            var fileStream = new FileStream(_file.Path, FileMode.Open);
+            var streamContent = new StreamContent(fileStream);
+
+            _app.SetPictureStream(streamContent);
 
             DisplayThumbnail();
 

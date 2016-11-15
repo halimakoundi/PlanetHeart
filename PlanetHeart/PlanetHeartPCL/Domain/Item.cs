@@ -1,3 +1,5 @@
+using System.Net.Http;
+
 namespace PlanetHeartPCL.Domain
 {
     public class Item
@@ -13,6 +15,7 @@ namespace PlanetHeartPCL.Domain
         public string PostCode { get; set; }
         public string Picture { get; set; }
         public ItemCondition Condition { get; set; }
+        public StreamContent PictureStream { get; set; }
     }
 
     public enum ItemCondition

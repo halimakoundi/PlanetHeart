@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using PlanetHeartPCL.Pages;
 using Xamarin.Forms;
 
@@ -9,6 +10,7 @@ namespace PlanetHeartPCL
         public event Action ShouldTakePicture = () => { };
         public event Action NoPicture = () => { };
         public event Action<string> ShouldShowPicture = (filepath) => { };
+        public event Action<StreamContent> ShouldSetPictureStream = (filestream) => { };
 
         public App()
         {
@@ -41,5 +43,11 @@ namespace PlanetHeartPCL
         {
             NoPicture();
         }
+
+        public void SetPictureStream(StreamContent streamContent)
+        {
+            ShouldSetPictureStream(streamContent);
+        }
+
     }
 }

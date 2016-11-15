@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Net.Http;
+using Android.Content;
 using PlanetHeartPCL.Domain;
 using PlanetHeartPCL.Infrastructure;
 using PlanetHeartPCL.Presentation;
@@ -13,14 +16,21 @@ namespace PlanetHeartPCL.Pages
         private readonly App _app = (Application.Current as App);
         private bool _openCameraOnAppearing=true;
         private readonly AddItemPresenter _presenter;
+        private StreamContent _pictureStream;
 
         public AddItemPage()
         {
             InitializeComponent();
             _app.ShouldShowPicture += ShowImage;
             _app.NoPicture += NoPictureTaken;
+            _app.ShouldSetPictureStream += SetPictureStream;
             ItemPicture.GestureRecognizers.Add(new TapGestureRecognizer());
             _presenter = new AddItemPresenter(new AddItemInteractor(this, new ItemsGateway()),new Executor(), new Navigator(Navigation) );
+        }
+
+        private void SetPictureStream(StreamContent stream)
+        {
+            _pictureStream = stream;
         }
 
         public void ShowImage(string filepath)
@@ -37,12 +47,14 @@ namespace PlanetHeartPCL.Pages
 
         public Item RetrieveItem()
         {
+            
             return new Item(Type.Text)
             {
                 Description = Description.Text,
                 PostCode = PostCode.Text,
                 Picture = "image_placeholder.png",
-                Condition = ItemCondition.VeryGood
+                Condition = ItemCondition.VeryGood,
+                PictureStream = _pictureStream
             };
         }
 
@@ -76,5 +88,6 @@ namespace PlanetHeartPCL.Pages
         {
             _presenter.OnAddItemButtonClicked();
         }
+
     }
 }
