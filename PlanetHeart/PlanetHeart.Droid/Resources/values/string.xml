@@ -9,4 +9,7 @@
   <string name="addLabel">Add a Label Please</string>
   <string name="getallItems">View all</string>
   <string name="app_name">Awesome Junk</string>
+  <string name="hello">Take a Picture</string>
+  <string name="app_name">Camera.Droid</string>
+  <string name="lblSuccess">Click the button to launch the camera</string>
 </resources>

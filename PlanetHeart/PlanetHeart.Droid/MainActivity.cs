@@ -1,101 +1,50 @@
-﻿using System;
-using System.IO;
-using System.Net.Http;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Android.App;
-using Android.Content;
-using Android.Content.PM;
 using Android.OS;
-using Android.Provider;
-using Java.IO;
-using PlanetHeartPCL;
-using Xamarin.Forms.Platform.Android;
-using Environment = Android.OS.Environment;
-using Uri = Android.Net.Uri;
-using PlanetHeart.Droid.Infrastructure;
-using File = Java.IO.File;
+using PlanetHeart.Droid.Views;
+using PlanetHeartPCL.Infrastructure;
+using PlanetHeartPCL.Presentation;
+using Xamarin.Forms;
+using ListView = Android.Widget.ListView;
 
 namespace PlanetHeart.Droid
 {
-
-    [Activity(Label = "PlanetHeart", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
-          Theme = "@style/AppTheme")]
-    public class MainActivity : FormsAppCompatActivity
+    [Activity(Label = "PlanetHeart", MainLauncher = true)]
+    public class MainActivity : Activity, IBrowserView
     {
-        private App _app;
-        private File _file;
-        private File _dir;
+        private ListView _listView;
+        private ObservableCollection<PresentationItem> Items { get; set; }
+        private HomePagePresenter _presenter;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            InitialiseApplication(bundle);
+            SetContentView(Resource.Layout.Main);
+            _listView = FindViewById<ListView>(Resource.Id.List);
+            Items = new ObservableCollection<PresentationItem>
+                        {
+                            new PresentationItem("Coffee table", "A Kitten", "image_placeholder.png"),
+                            new PresentationItem("Office Chair", "John Doe", "image_placeholder.png")
+                        };
+            _listView.Adapter = new ItemListAdapter(this, Items);
 
-            CreateDirectoryForPictures();
+            _presenter = new HomePagePresenter(new GetItemsInteractor(new ItemsGateway()), new Executor(), this, new ItemMapper());
+            _presenter.OnViewReady();
 
-            _app.ShouldTakePicture += () =>
+        }
+
+        public void Display(List<PresentationItem> presentationItems)
+        {
+           RunOnUiThread(() =>
             {
-                var intent = new Intent(MediaStore.ActionImageCapture);
-                _file = new File(_dir, $"myPhoto_{Guid.NewGuid()}.jpg");
-                intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(_file));
-                StartActivityForResult(intent, 0);
-            };
-        }
-
-        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
-        {
-
-            var mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
-            var contentUri = Uri.FromFile(_file);
-            mediaScanIntent.SetData(contentUri);
-            SendBroadcast(mediaScanIntent);
-
-            if (SkipIfNoPicture()) return;
-
-            var fileStream = new FileStream(_file.Path, FileMode.Open);
-            var streamContent = new StreamContent(fileStream);
-
-            _app.SetPictureStream(streamContent);
-
-            DisplayThumbnail();
-
-            base.OnActivityResult(requestCode, resultCode, data);
-        }
-
-        private bool SkipIfNoPicture()
-        {
-            if (!NoPictureTaken()) return false;
-            _app.OnNoPicture();
-            return true;
-        }
-
-        private void DisplayThumbnail()
-        {
-            var thumbnail = BitmapHelpers.CreateThumbnail(_file.Path, 450, 450);
-            _app.ShowPicture(thumbnail);
-        }
-
-        private bool NoPictureTaken()
-        {
-            return !System.IO.File.Exists(_file.Path);
-        }
-
-        private void InitialiseApplication(Bundle bundle)
-        {
-            Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App());
-            _app = (Xamarin.Forms.Application.Current as App);
-        }
-
-        private void CreateDirectoryForPictures()
-        {
-            _dir = new File(
-                Environment.GetExternalStoragePublicDirectory(
-                    Environment.DirectoryPictures), "PlanetHeart");
-            if (!_dir.Exists())
-            {
-                _dir.Mkdirs();
-            }
+                if (presentationItems != null && presentationItems.Count > 0)
+                {
+                    _listView.Adapter = new ItemListAdapter(this, presentationItems);
+                }
+            });
         }
     }
 }
+
