@@ -12,9 +12,9 @@ namespace PlanetHeart.Droid.Infrastructure
             return BitmapFactory.DecodeFile(fileName, options);
         }
 
-        public static string CreateThumbnail(string sourceFile, int reqWidth, int reqHeight)
+        public static string CreateThumbnail(string sourceFile, int reqWidth, int reqHeight, string thumbnailPrefix = "")
         {
-            var thumbnail = sourceFile.Replace(".jpg", "_thumb.jpg");
+            var thumbnail = sourceFile.Replace(".jpg", $"_{thumbnailPrefix}thumb.jpg");
 
             var source = sourceFile.LoadBitmap();
             var target = ThumbnailUtils.ExtractThumbnail(source, reqWidth, reqHeight);

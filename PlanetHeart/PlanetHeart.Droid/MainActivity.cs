@@ -52,14 +52,20 @@ namespace PlanetHeart.Droid
 
             if (SkipIfNoPicture()) return;
 
-            var fileStream = new FileStream(_file.Path, FileMode.Open);
-            var streamContent = new StreamContent(fileStream);
-
-            _app.SetPictureStream(streamContent);
+            SetPictureStream();
 
             DisplayThumbnail();
 
             base.OnActivityResult(requestCode, resultCode, data);
+        }
+
+        private void SetPictureStream()
+        {
+            var thumbnail = BitmapHelpers.CreateThumbnail(_file.Path, 500, 500, Guid.NewGuid().ToString());
+            var fileStream = new FileStream(thumbnail, FileMode.Open);
+            var streamContent = new StreamContent(fileStream);
+
+            _app.SetPictureStream(streamContent);
         }
 
         private bool SkipIfNoPicture()
