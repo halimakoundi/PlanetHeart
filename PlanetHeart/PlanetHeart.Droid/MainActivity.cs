@@ -2,10 +2,11 @@
 using System.Collections.ObjectModel;
 using Android.App;
 using Android.OS;
+using Android.Views;
+using Android.Widget;
 using PlanetHeart.Droid.Views;
 using PlanetHeartPCL.Infrastructure;
 using PlanetHeartPCL.Presentation;
-using Xamarin.Forms;
 using ListView = Android.Widget.ListView;
 
 namespace PlanetHeart.Droid
@@ -22,6 +23,11 @@ namespace PlanetHeart.Droid
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.Main);
+
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetActionBar(toolbar);
+            ActionBar.Title = "PlanetHeart";
+
             _listView = FindViewById<ListView>(Resource.Id.List);
             Items = new ObservableCollection<PresentationItem>
                         {
@@ -31,7 +37,7 @@ namespace PlanetHeart.Droid
             _listView.Adapter = new ItemListAdapter(this, Items);
 
             _presenter = new HomePagePresenter(new GetItemsInteractor(new ItemsGateway()), new Executor(), this, new ItemMapper());
-            _presenter.OnViewReady();
+            //_presenter.OnViewReady();
 
         }
 
