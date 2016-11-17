@@ -4,5 +4,6 @@
   <color name="primaryDark">#6281AB</color>
   <color name="accent">#FFC107</color>
   <color name="window_background">#FFFFFF</color>
+  <color name="fab_color">@color/primary</color>
   <color name="splash_background">#6281AB</color>
 </resources>

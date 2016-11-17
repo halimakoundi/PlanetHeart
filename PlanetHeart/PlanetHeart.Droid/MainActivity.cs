@@ -3,12 +3,13 @@ using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Android.Support.V7.App;
+using Android.Support.V7.Widget;
 using Android.Views;
 using PlanetHeart.Droid.Views;
 
 namespace PlanetHeart.Droid
 {
-    [Activity(Label = "PlanetHeart",Icon="@drawable/icon", MainLauncher = true)]
+    [Activity(Label = "PlanetHeart",Icon="@drawable/icon", Theme = "@style/PlanetHeartTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
 
@@ -18,12 +19,29 @@ namespace PlanetHeart.Droid
 
             SetContentView(Resource.Layout.Main);
 
-            var pager = FindViewById<ViewPager>(Resource.Id.pager);
+            SetTabLayoutWith(ViewPager());
+
+            SetToolbar();
+        }
+
+        private void SetToolbar()
+        {
+            var toolbar = (Toolbar) FindViewById(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+        }
+
+        private void SetTabLayoutWith(ViewPager pager)
+        {
             var tabLayout = FindViewById<TabLayout>(Resource.Id.tabs);
-            var adapter = new CustomPagerAdapter(this, SupportFragmentManager);
-            
-            pager.Adapter = adapter;
             tabLayout.SetupWithViewPager(pager);
+        }
+
+        private ViewPager ViewPager()
+        {
+            var pager = FindViewById<ViewPager>(Resource.Id.pager);
+            var adapter = new CustomPagerAdapter(this, SupportFragmentManager);
+            pager.Adapter = adapter;
+            return pager;
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -32,8 +50,6 @@ namespace PlanetHeart.Droid
             inflater.Inflate(Resource.Menu.MainTopMenu, menu);
             return base.OnCreateOptionsMenu(menu);
         }
-
-
 
     }
 }

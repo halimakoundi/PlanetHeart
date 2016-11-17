@@ -10,7 +10,7 @@ using PlanetHeartPCL.Presentation;
 namespace PlanetHeart.Droid.Views
 {
 
-    public class HomeFragment : Fragment, IBrowserView
+    public class HomeFragment : Fragment, IBrowserView, FloatingActionButton.IOnCheckedChangeListener
     {
         public ObservableCollection<PresentationItem> Items { get; set; }
         private ListView _listView;
@@ -27,12 +27,18 @@ namespace PlanetHeart.Droid.Views
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+            
             return inflater.Inflate(Resource.Layout.HomeFragment, container, false);
+
         }
 
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
+            // Make this Fragment listen for changes in both FABs.
+            var fab1 = (FloatingActionButton)view.FindViewById(Resource.Id.fab_1);
+            fab1.SetOnCheckedChangeListener(this);
+
             _listView = Activity.FindViewById<ListView>(Resource.Id.List);
             Items = new ObservableCollection<PresentationItem>
             {
@@ -54,6 +60,10 @@ namespace PlanetHeart.Droid.Views
                 }
             });
         }
-        
+
+        public void OnCheckedChanged(FloatingActionButton fabView, bool isChecked)
+        {
+            //throw new System.NotImplementedException();
+        }
     }
 }

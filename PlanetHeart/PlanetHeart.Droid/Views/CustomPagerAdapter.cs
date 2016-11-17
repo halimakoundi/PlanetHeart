@@ -7,6 +7,7 @@ namespace PlanetHeart.Droid.Views
 {
     public class CustomPagerAdapter : FragmentPagerAdapter
     {
+        public override int Count => PAGE_COUNT;
         private readonly string[] _tabTitles = { "Home", "Favourites" };
         private readonly Fragment[] _tabs = { new HomeFragment(), new FavouritsFragment() };
         private const int PAGE_COUNT = 2;
@@ -15,7 +16,6 @@ namespace PlanetHeart.Droid.Views
         {
         }
 
-        public override int Count => PAGE_COUNT;
         public override Fragment GetItem(int position)
         {
             return _tabs[position]; 
@@ -23,7 +23,6 @@ namespace PlanetHeart.Droid.Views
 
         public override ICharSequence GetPageTitleFormatted(int position)
         {
-            // Generate title based on item position
             return CharSequence.ArrayFromStringArray(_tabTitles)[position];
         }
     }

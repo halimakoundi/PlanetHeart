@@ -4,5 +4,10 @@
        android:id="@+id/menu_account"
        android:icon="@drawable/ic_account"
        android:showAsAction="always"
-       android:title="Edit" />
+       android:title="My Account" />
+  <item
+       android:id="@+id/menu_add_item"
+       android:icon="@drawable/ic_camera"
+       android:showAsAction="always"
+       android:title="Add" />
 </menu>
