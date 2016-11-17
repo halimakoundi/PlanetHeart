@@ -1,22 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using Android.App;
+﻿using Android.App;
 using Android.OS;
+using Android.Support.Design.Widget;
+using Android.Support.V4.View;
+using Android.Support.V7.App;
 using Android.Views;
-using Android.Widget;
 using PlanetHeart.Droid.Views;
-using PlanetHeartPCL.Infrastructure;
-using PlanetHeartPCL.Presentation;
-using ListView = Android.Widget.ListView;
 
 namespace PlanetHeart.Droid
 {
-    [Activity(Label = "PlanetHeart", MainLauncher = true)]
-    public class MainActivity : Activity, IBrowserView
+    [Activity(Label = "PlanetHeart",Icon="@drawable/icon", MainLauncher = true)]
+    public class MainActivity : AppCompatActivity
     {
-        private ListView _listView;
-        private ObservableCollection<PresentationItem> Items { get; set; }
-        private HomePagePresenter _presenter;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -24,33 +18,23 @@ namespace PlanetHeart.Droid
 
             SetContentView(Resource.Layout.Main);
 
-            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-            SetActionBar(toolbar);
-            ActionBar.Title = "PlanetHeart";
-
-            _listView = FindViewById<ListView>(Resource.Id.List);
-            Items = new ObservableCollection<PresentationItem>
-                        {
-                            new PresentationItem("Coffee table", "A Kitten", "image_placeholder.png"),
-                            new PresentationItem("Office Chair", "John Doe", "image_placeholder.png")
-                        };
-            _listView.Adapter = new ItemListAdapter(this, Items);
-
-            _presenter = new HomePagePresenter(new GetItemsInteractor(new ItemsGateway()), new Executor(), this, new ItemMapper());
-            //_presenter.OnViewReady();
-
+            var pager = FindViewById<ViewPager>(Resource.Id.pager);
+            var tabLayout = FindViewById<TabLayout>(Resource.Id.tabs);
+            var adapter = new CustomPagerAdapter(this, SupportFragmentManager);
+            
+            pager.Adapter = adapter;
+            tabLayout.SetupWithViewPager(pager);
         }
 
-        public void Display(List<PresentationItem> presentationItems)
+        public override bool OnCreateOptionsMenu(IMenu menu)
         {
-           RunOnUiThread(() =>
-            {
-                if (presentationItems != null && presentationItems.Count > 0)
-                {
-                    _listView.Adapter = new ItemListAdapter(this, presentationItems);
-                }
-            });
+            var inflater = MenuInflater;
+            inflater.Inflate(Resource.Menu.MainTopMenu, menu);
+            return base.OnCreateOptionsMenu(menu);
         }
+
+
+
     }
 }
 

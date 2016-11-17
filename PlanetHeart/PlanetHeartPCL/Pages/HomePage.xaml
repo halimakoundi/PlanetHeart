@@ -15,6 +15,7 @@
     <ListView x:Name="ItemsListView" RowHeight="260" ItemSelected="OnSelection" ItemTapped="OnTap" 
               IsPullToRefreshEnabled="True" RefreshCommand="{Binding OnRefresh}" Refreshing="OnRefresh">
       <ListView.ItemTemplate>
+        
         <DataTemplate>
           <ViewCell>
             <StackLayout Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="White">

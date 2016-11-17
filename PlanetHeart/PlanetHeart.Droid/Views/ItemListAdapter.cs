@@ -32,10 +32,7 @@ namespace PlanetHeart.Droid.Views
 
             view.FindViewById<TextView>(Resource.Id.UserName).Text = item.AddedBy;
             view.FindViewById<TextView>(Resource.Id.ItemType).Text = item.Title;
-           // view.FindViewById<ImageView>(Resource.Id.ItemPicture).SetImageURI(Android.Net.Uri.Parse(item.ImageUrl));
-            view.FindViewById<ImageView>(Resource.Id.ItemPicture).SetImageResource(Resource.Drawable.image_placeholder);
-
-            view.FindViewById<TextView>(Resource.Id.LocationPostCode).Text = item.Title;
+            view.FindViewById<ImageView>(Resource.Id.ItemPicture).SetImageURI(Android.Net.Uri.Parse(item.ImageUrl));
 
             return view;
         }
