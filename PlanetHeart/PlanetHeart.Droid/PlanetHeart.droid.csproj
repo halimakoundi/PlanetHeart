@@ -128,6 +128,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\AddItemActivity.cs" />
     <Compile Include="Views\CustomPagerAdapter.cs" />
     <Compile Include="Infrastructure\BitmapHelpers.cs" />
     <Compile Include="Infrastructure\Picture.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Views\FloatingActionButton.cs" />
     <Compile Include="Views\HomeFragment.cs" />
     <Compile Include="Views\ItemListAdapter.cs" />
+    <Compile Include="Views\Picture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

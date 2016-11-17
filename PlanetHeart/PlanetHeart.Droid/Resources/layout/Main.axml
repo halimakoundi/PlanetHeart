@@ -9,13 +9,12 @@
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:minHeight="?attr/actionBarSize"
-    android:background="?attr/colorPrimary"
-    app:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
+    android:background="@color/primary"/>
   <android.support.design.widget.TabLayout
       android:id="@+id/tabs"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="?attr/colorPrimaryDark"/>
+      android:background="@color/primaryLight"/>
   <android.support.v4.view.ViewPager
       android:id="@+id/pager"
       android:layout_width="match_parent"

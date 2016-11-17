@@ -1,16 +1,21 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Android.Content;
 using Android.OS;
+using Android.Provider;
 using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
+using Java.IO;
 using PlanetHeartPCL.Infrastructure;
 using PlanetHeartPCL.Presentation;
+using Uri = Android.Net.Uri;
 
 namespace PlanetHeart.Droid.Views
 {
 
-    public class HomeFragment : Fragment, IBrowserView, FloatingActionButton.IOnCheckedChangeListener
+    public class HomeFragment : Fragment, IBrowserView, View.IOnClickListener
     {
         public ObservableCollection<PresentationItem> Items { get; set; }
         private ListView _listView;
@@ -27,7 +32,7 @@ namespace PlanetHeart.Droid.Views
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            
+
             return inflater.Inflate(Resource.Layout.HomeFragment, container, false);
 
         }
@@ -37,7 +42,7 @@ namespace PlanetHeart.Droid.Views
             base.OnViewCreated(view, savedInstanceState);
             // Make this Fragment listen for changes in both FABs.
             var fab1 = (FloatingActionButton)view.FindViewById(Resource.Id.fab_1);
-            fab1.SetOnCheckedChangeListener(this);
+            fab1.SetOnClickListener(this);
 
             _listView = Activity.FindViewById<ListView>(Resource.Id.List);
             Items = new ObservableCollection<PresentationItem>
@@ -46,6 +51,8 @@ namespace PlanetHeart.Droid.Views
                 new PresentationItem("Office Chair", "John Doe", "image_placeholder.png")
             };
             _listView.Adapter = new ItemListAdapter(Activity, Items);
+
+            Picture.CreateDirectory();
 
             _presenter.OnViewReady();
         }
@@ -61,9 +68,14 @@ namespace PlanetHeart.Droid.Views
             });
         }
 
-        public void OnCheckedChanged(FloatingActionButton fabView, bool isChecked)
+        public void OnClick(View v)
         {
-            //throw new System.NotImplementedException();
+            var intent = new Intent(MediaStore.ActionImageCapture);
+            Picture.File = new File(Picture.Dir, $"newgem_{Guid.NewGuid()}.jpg");
+
+            intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(Picture.File));
+
+            StartActivity(intent);
         }
     }
 }
