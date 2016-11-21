@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dip">
+        <ImageView
+            android:id="@+id/ItemPicture"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_photo" />
+      <EditText
+          android:id="@+id/ItemDescription"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textSize="20dip"
+          android:inputType ="textMultiLine"/>
+    </LinearLayout>
+    <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:paddingLeft="10dip">
+      <ImageView
+            android:id="@+id/LabelIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_share" />
+      <Spinner
+         android:id="@+id/categories"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:spinnerMode="dropdown" />
+    </LinearLayout>
+  <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10dip">
+    <ImageView
+        android:id="@+id/LocationIcon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_place" />
+    <EditText
+        android:id="@+id/ItemLocationPostCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dip" />
+  </LinearLayout>
+  <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10dip">
+    <ImageView
+        android:id="@+id/ConditionImage"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_star_border" />
+    <TextView
+        android:id="@+id/ItemConditionRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dip" />
+  </LinearLayout>
+</LinearLayout>

@@ -40,7 +40,6 @@ namespace PlanetHeart.Droid.Views
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
-            // Make this Fragment listen for changes in both FABs.
             var fab1 = (FloatingActionButton)view.FindViewById(Resource.Id.fab_1);
             fab1.SetOnClickListener(this);
 
@@ -70,11 +69,7 @@ namespace PlanetHeart.Droid.Views
 
         public void OnClick(View v)
         {
-            var intent = new Intent(MediaStore.ActionImageCapture);
-            Picture.File = new File(Picture.Dir, $"newgem_{Guid.NewGuid()}.jpg");
-
-            intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(Picture.File));
-
+            var intent = new Intent(Activity, typeof(CameraWrapper));
             StartActivity(intent);
         }
     }

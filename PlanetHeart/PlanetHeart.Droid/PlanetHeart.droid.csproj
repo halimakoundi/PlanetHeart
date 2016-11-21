@@ -129,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Views\AddItemActivity.cs" />
+    <Compile Include="Views\CameraWrapper.cs" />
     <Compile Include="Views\CustomPagerAdapter.cs" />
     <Compile Include="Infrastructure\BitmapHelpers.cs" />
     <Compile Include="Infrastructure\Picture.cs" />
@@ -157,6 +158,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\HomeFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AddItem.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

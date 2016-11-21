@@ -1,15 +1,13 @@
 using System;
 using Android.App;
-using Android.Content;
+using Android.Graphics;
 using Android.OS;
-using Android.Provider;
 using Android.Widget;
-using Java.IO;
-using Uri = Android.Net.Uri;
+using PlanetHeart.Droid.Infrastructure;
 
 namespace PlanetHeart.Droid.Views
 {
-    [Activity(Label = "Add Item")]
+    [Activity(Label = "Add Item", Theme = "@style/PlanetHeartTheme")]
     public class AddItemActivity : Activity
     {
         private ImageView _imageView;
@@ -17,37 +15,26 @@ namespace PlanetHeart.Droid.Views
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.AddItem);
 
-            var intent = new Intent(MediaStore.ActionImageCapture);
-            Picture.File = new File(Picture.Dir, $"newgem_{Guid.NewGuid()}.jpg");
-
-            intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(Picture.File));
-
-            StartActivityForResult(intent, 0);
+            _imageView = FindViewById<ImageView>(Resource.Id.ItemPicture);
+            SetImage();
         }
 
-        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        private void SetImage()
         {
-            var mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
-            var contentUri = Uri.FromFile(Picture.File);
-            mediaScanIntent.SetData(contentUri);
-            SendBroadcast(mediaScanIntent);
 
-            // Display in ImageView. We will resize the bitmap to fit the display
-            // Loading the full sized image will consume too much memory 
-            // and cause the application to crash.
-
-            int height = Resources.DisplayMetrics.HeightPixels;
-            int width = _imageView.Height;
-            //Picture.Bitmap = Picture.File.Path.LoadAndResizeBitmap(width, height);
-            if (Picture.Bitmap != null)
+            if (Picture.File.Path != null)
             {
-                _imageView.SetImageBitmap(Picture.Bitmap);
+                var thumbnail = BitmapHelpers.CreateThumbnail(Picture.File.Path, 500, 500);
+                var bitmap = BitmapFactory.DecodeFile(thumbnail);
+                _imageView.SetImageBitmap(bitmap);
+
                 Picture.Bitmap = null;
             }
-
             GC.Collect();
-            base.OnActivityResult(requestCode, resultCode, data);
         }
+
+
     }
 }

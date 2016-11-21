@@ -16,7 +16,7 @@
             android:layout_height="48dp"
             android:padding="5dp"
             android:src="@drawable/ic_account" />
-      <LinearLayout
+        <LinearLayout
             android:id="@+id/MiddleIn"
             android:orientation="vertical"
             android:layout_width="wrap_content"
@@ -29,16 +29,16 @@
                 android:textColor="#FF7F3300"
                 android:textSize="20dip"
                 android:textStyle="italic" />
-          <TextView
+            <TextView
                 android:id="@+id/AddedOn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#FF7F3300"
                 android:textSize="20dip"
                 android:textStyle="italic"
-                android:text="Added 2 hours ago"/>
+                android:text="Added 2 hours ago" />
         </LinearLayout>
-      <ImageView
+        <ImageView
             android:id="@+id/Favorite"
             android:layout_width="48dp"
             android:layout_height="48dp"
