@@ -1,79 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-   android:layout_width="fill_parent"
-   android:layout_height="wrap_content"
-   android:orientation="vertical"
-   android:padding="8dp">
-  <LinearLayout android:id="@+id/Top"
-     android:orientation="horizontal"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:paddingLeft="10dip">
-    <ImageView
-      android:id="@+id/UserImage"
-      android:layout_width="48dp"
-      android:layout_height="48dp"
-      android:padding="5dp"
-      android:src="@drawable/ic_account" />
-    <TextView
-     android:id="@+id/UserName"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:textColor="#FF7F3300"
-     android:textSize="20dip"
-     android:textStyle="italic"
-         />
-    <TextView
-     android:id="@+id/ItemType"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:textSize="14dip"
-     android:textColor="#FF267F00"
-     android:paddingLeft="100dip"/>
-  </LinearLayout>
-  <LinearLayout android:id="@+id/Middle"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+    <LinearLayout
+        android:id="@+id/Top"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dip">
+        <ImageView
+            android:id="@+id/UserImage"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_account" />
+      <LinearLayout
+            android:id="@+id/MiddleIn"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dip">
+            <TextView
+                android:id="@+id/UserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FF7F3300"
+                android:textSize="20dip"
+                android:textStyle="italic" />
+          <TextView
+                android:id="@+id/AddedOn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FF7F3300"
+                android:textSize="20dip"
+                android:textStyle="italic"
+                android:text="Added 2 hours ago"/>
+        </LinearLayout>
+      <ImageView
+            android:id="@+id/Favorite"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_favorite" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/Middle"
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="10dip">
-    <ImageView
-          android:id="@+id/ItemPicture"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:padding="5dp"
-          android:src="@drawable/image_placeholder" />
-  </LinearLayout>
-
-  <LinearLayout android:id="@+id/Bottom"
-       android:orientation="horizontal"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:paddingLeft="10dip">
-
-    <ImageView
-      android:id="@+id/Location"
-      android:layout_width="48dp"
-      android:layout_height="48dp"
-      android:padding="5dp"
-      android:src="@drawable/icon_marker" />
-
-    <TextView
-     android:id="@+id/LocationPostCode"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:textSize="20dip" />
-
-    <ImageView
-      android:id="@+id/Condition"
-      android:layout_width="48dp"
-      android:layout_height="48dp"
-      android:padding="5dp"
-      android:src="@drawable/ic_star" />
-    <ImageView
-      android:id="@+id/Share"
-      android:layout_width="48dp"
-      android:layout_height="48dp"
-      android:padding="5dp"
-      android:src="@drawable/ic_share" />
-  </LinearLayout>
-</LinearLayout >
+        <ImageView
+            android:id="@+id/ItemPicture"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/image_placeholder" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/Bottom"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dip">
+        <ImageView
+            android:id="@+id/Location"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_place" />
+        <TextView
+            android:id="@+id/LocationPostCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dip" />
+        <ImageView
+            android:id="@+id/Condition"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_star" />
+        <ImageView
+            android:id="@+id/Share"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_share" />
+    </LinearLayout>
+</LinearLayout>
