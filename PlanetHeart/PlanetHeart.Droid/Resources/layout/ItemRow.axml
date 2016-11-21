@@ -18,7 +18,7 @@
             android:src="@drawable/ic_account" />
       <LinearLayout
             android:id="@+id/MiddleIn"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dip">
